@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
 <html>
@@ -31,7 +32,7 @@
 					
 					<button type="submit" id="connexion" class="btn-minimal">Connexion</button>
 					
-					<a href="register.php"> Creer un compte </a>
+					<a href="<c:url value="/register"/>"> Creer un compte </a>
 					
 				</form>
 				
