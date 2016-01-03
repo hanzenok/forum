@@ -1,7 +1,10 @@
 package m2geii.forum.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +38,34 @@ public class CreateClient extends HttpServlet {
     	String firstname = request.getParameter(FIELD_FNAME);
     	String secondname = request.getParameter(FIELD_SNAME);
     	
+    	//chargement de driver jdbc
+    	try {Class.forName("com.mysql.jdbc.Driver");} 
+    	catch ( ClassNotFoundException e ) {e.printStackTrace();}
+    	
+    	//connexion a la base
+    	String url = "jdbc:mysql://localhost:3306/forum";
+    	String user = "root";
+    	String bdpass = "svessa";
+    	Connection conn = null;
+    	Statement stat = null;
+    	int status = -1;
+    	
+    	try 
+    	{
+			conn = DriverManager.getConnection(url, user, bdpass);	
+			stat = conn.createStatement();
+			status = stat.executeUpdate("INSERT INTO users (login, pass, firstname, secondname) "
+					+ "VALUES ('" + login + "', '" + pass1 + "', '" + firstname + "', '" + secondname + "');" 
+					, Statement.RETURN_GENERATED_KEYS);
+    	} 
+    	
+    	
+    	catch (SQLException e) {e.printStackTrace();}
+    	//message
     	String message = new String();
     	if(!pass1.equals(pass2)) message = "Les mot de passes ne correspondent pas";
     	
+    	message += "(" + status + ")";
     	request.setAttribute(ATT_MESSAGE, message);
     	this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
     
