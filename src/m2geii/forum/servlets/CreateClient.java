@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import m2geii.forum.beans.User;
+
 public class CreateClient extends HttpServlet {
 	
 	private static final long serialVersionUID = 4373874692137096820L;
@@ -38,35 +40,48 @@ public class CreateClient extends HttpServlet {
     	String firstname = request.getParameter(FIELD_FNAME);
     	String secondname = request.getParameter(FIELD_SNAME);
     	
-    	//chargement de driver jdbc
-    	try {Class.forName("com.mysql.jdbc.Driver");} 
-    	catch ( ClassNotFoundException e ) {e.printStackTrace();}
-    	
-    	//connexion a la base
-    	String url = "jdbc:mysql://localhost:3306/forum";
-    	String user = "root";
-    	String bdpass = "svessa";
-    	Connection conn = null;
-    	Statement stat = null;
-    	int status = -1;
-    	
-    	try 
-    	{
-			conn = DriverManager.getConnection(url, user, bdpass);	
-			stat = conn.createStatement();
-			status = stat.executeUpdate("INSERT INTO users (login, pass, firstname, secondname) "
-					+ "VALUES ('" + login + "', '" + pass1 + "', '" + firstname + "', '" + secondname + "');" 
-					, Statement.RETURN_GENERATED_KEYS);
-    	} 
-    	
-    	
-    	catch (SQLException e) {e.printStackTrace();}
-    	//message
+    	//verification des mot de passes
     	String message = new String();
-    	if(!pass1.equals(pass2)) message = "Les mot de passes ne correspondent pas";
-    	
-    	message += "(" + status + ")";
+    	if(!pass1.equals(pass2))
+    	{
+    		message = "Les mot de passes ne correspondent pas";
+    	}
+    	else
+    	{
+	    	//creation de user bean
+	    	User user = new User();
+	    	user.setLogin(login);
+	    	user.setPass(pass1);
+	    	user.setFirstname(firstname);
+	    	user.setSecondname(secondname);
+	    	
+	    	//chargement de driver jdbc
+	    	try {Class.forName("com.mysql.jdbc.Driver");} 
+	    	catch ( ClassNotFoundException e ) {e.printStackTrace();}
+	    	
+	    	//connexion a la base
+	    	String url = "jdbc:mysql://localhost:3306/forum";
+	    	String bduser = "root";
+	    	String bdpass = "svessa";
+	    	Connection conn = null;
+	    	Statement stat = null;
+	    	int status = -1;
+	    	
+	    	try 
+	    	{
+				conn = DriverManager.getConnection(url, bduser, bdpass);	
+				stat = conn.createStatement();
+				status = stat.executeUpdate("INSERT INTO users (login, pass, firstname, secondname) "
+						+ "VALUES ('" + login + "', '" + pass1 + "', '" + firstname + "', '" + secondname + "');" 
+						, Statement.RETURN_GENERATED_KEYS);
+	    	} 
+	    	
+	    	
+	    	catch (SQLException e) {e.printStackTrace();}
+	    	
+    	}
     	request.setAttribute(ATT_MESSAGE, message);
+    	
     	this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
     
     }
