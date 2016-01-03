@@ -32,8 +32,8 @@
 				</label>
 
 				<label for="name">
-					<input type="text" name="firstname" id="firstname" placeholder="Nom" maxlength="32">
-					<input type="text" name="secondname" id="secondname" placeholder="Prenom" maxlength="32">
+					<input type="text" name="firstname" id="firstname" placeholder="Nom" value="<c:out value="${param.firstname}"/>" maxlength="32">
+					<input type="text" name="secondname" id="secondname" placeholder="Prenom" value="<c:out value="${param.secondname}"/>" maxlength="32">
 				</label>
 
 				<input type="submit" class="btn-minimal" value="M'inscrire">

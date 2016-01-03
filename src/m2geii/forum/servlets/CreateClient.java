@@ -1,16 +1,13 @@
 package m2geii.forum.servlets;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
 public class CreateClient extends HttpServlet {
@@ -41,7 +38,7 @@ public class CreateClient extends HttpServlet {
     	String secondname = request.getParameter(FIELD_SNAME);
     	
     	//verification des mot de passes
-    	String message = new String();
+    	String message = "";
     	if(!pass1.equals(pass2))
     	{
     		message = "Les mot de passes ne correspondent pas";
@@ -55,31 +52,14 @@ public class CreateClient extends HttpServlet {
 	    	user.setFirstname(firstname);
 	    	user.setSecondname(secondname);
 	    	
-	    	//chargement de driver jdbc
-	    	try {Class.forName("com.mysql.jdbc.Driver");} 
-	    	catch ( ClassNotFoundException e ) {e.printStackTrace();}
+	    	//gestionnaire de la bd
+	    	ForumDB db = new ForumDB();
+	    	int status = db.addUser(user);
 	    	
-	    	//connexion a la base
-	    	String url = "jdbc:mysql://localhost:3306/forum";
-	    	String bduser = "root";
-	    	String bdpass = "svessa";
-	    	Connection conn = null;
-	    	Statement stat = null;
-	    	int status = -1;
-	    	
-	    	try 
-	    	{
-				conn = DriverManager.getConnection(url, bduser, bdpass);	
-				stat = conn.createStatement();
-				status = stat.executeUpdate("INSERT INTO users (login, pass, firstname, secondname) "
-						+ "VALUES ('" + login + "', '" + pass1 + "', '" + firstname + "', '" + secondname + "');" 
-						, Statement.RETURN_GENERATED_KEYS);
-	    	} 
-	    	
-	    	
-	    	catch (SQLException e) {e.printStackTrace();}
-	    	
+	    	if(status == -1)
+	    		message = "Utilisateur avec cet login '" + user.getLogin() + "' existe déjà";
     	}
+    	
     	request.setAttribute(ATT_MESSAGE, message);
     	
     	this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
