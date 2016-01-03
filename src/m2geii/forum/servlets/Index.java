@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 public class Index extends HttpServlet {
 	
 	private static final long serialVersionUID = 7098976741262951870L;
-
+	
+	public static final String VIEW = "/WEB-INF/index.jsp";
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 

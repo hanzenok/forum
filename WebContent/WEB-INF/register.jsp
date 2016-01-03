@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
      <head>
@@ -13,24 +15,20 @@
 		
 			<h2>Cr&eacute;er un compte</h2>
 			
-			<form method="post" class="minimal">
+			<form method="post" action="CreateClient" class="minimal">
 				
 				<label for="login">
 					<!-- Majuscules ou minisucles ou underscore ou chiffres -->
-					<input type="text" name="login" id="login" placeholder="Login" pattern="^[A-Za-z0-9_]{4,32}$" maxlength="32" required>
+					<input type="text" name="login" id="login" placeholder="Login" pattern=".{4,32}" maxlength="32" value="<c:out value="${param.login}"/>" required>
 				</label>
 				
 				<label for="password">
 					<!-- Majuscules et minisucles et chiffres -->
-					<input type="password" name="password" id="mdp1" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,32}" maxlength="32" required>
+					<input type="password" name="password" id="mdp1" placeholder="Mot de passe" pattern=".{6,32}" maxlength="32" required>
 				</label>
 
 				<label for="password2">
-					<input type="password" name="password2" id="mdp2" placeholder="Confirm&eacute;e le mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,32}" maxlength="32" required>
-				</label>
-
-				<label for="captcha">
-					<span id="a">  </span> + <span id="b">  </span> = <span id="capAlert" style="display:none;">Erreur</span> <input type="text" name="captcha" id="captcha" style="margin:0; padding:0; font-size:100%; line-height:1;width:20%;float:right;" required>
+					<input type="password" name="password2" id="mdp2" placeholder="Confirm&eacute;ez le mot de passe" pattern=".{6,32}" maxlength="32" required>
 				</label>
 
 				<label for="name">
@@ -42,7 +40,8 @@
 
 		   </form>
 
-           <div id="alert" style="display:none;"><p>Verifier votre mot de passe</p> </div>
+			<%-- Affichage de la chaîne "message" transmise par la servlet --%>
+        	<p class="info">${message}</p>
 
 	   </section>
 
