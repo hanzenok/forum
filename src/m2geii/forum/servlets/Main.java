@@ -6,13 +6,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Register extends HttpServlet 
+public class Main extends HttpServlet 
 {	
-	private static final long serialVersionUID = 4373874692137096820L;
-
-	public static final String VIEW = "/WEB-INF/register.jsp";
+	private static final long serialVersionUID = -4312652067101625925L;
+	
+	public static final String VIEW = "/WEB-INF/main.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException 
+	{	
+		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
 		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
