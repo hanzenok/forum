@@ -59,9 +59,8 @@ public class CreateClient extends HttpServlet {
 	    	if(status == -1)
 	    		message = "Utilisateur avec cet login '" + user.getLogin() + "' existe déjà";
     	}
-    	
-    	request.setAttribute(ATT_MESSAGE, message);
-    	
+  
+    	request.setAttribute(ATT_MESSAGE, message);  	
     	this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
     
     }
