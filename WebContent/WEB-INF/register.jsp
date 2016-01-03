@@ -10,7 +10,7 @@
 	</head>
 	
 	<body>
-		
+
 		<section class="form" id="form">
 		
 			<h2>Cr&eacute;er un compte</h2>
@@ -44,8 +44,6 @@
         	<p class="info">${message}</p>
 
 	   </section>
-
-	<script src="register.js"></script>
 	
 	</body>
 	
