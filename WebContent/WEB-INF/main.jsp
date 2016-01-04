@@ -10,12 +10,32 @@
 	</head>
 	
 	<body>
+	
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
+		
 		<section class="form" id="forum">
-				<div id="agenda" ></div >
+		
+			<table>
+				<tr>
+					<th>Author</th>
+					<th>Titre</th>
+					<th>Date de creation</th>
+					<th>Dernier modification</th>
+				</tr>
+
+				<c:forEach items="${conversations}" var="conversation">
+					<tr>
+						<td> <c:out value="${conversation.author.login}"></c:out> </td>
+						<td> <c:out value="${conversation.title}"></c:out> </td>
+						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
+						<td> <c:out value="${conversation.modificationDate}"></c:out> </td>
+					</tr>
+				</c:forEach>
+
+			</table>
 		</section>
 
 	</body>

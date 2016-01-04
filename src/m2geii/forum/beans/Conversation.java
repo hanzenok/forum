@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 public class Conversation {
 	
-	private Long id;
+	private int id;
 	private User author;
 	private String title;
 	
-	private String date_creation;
-	private String date_modification;
+	private String creation_date;
+	private String modification_date;
 	
 	private ArrayList<Post> posts;
 
 	
-	public Long getId()
+	public int getId()
 	{
 		return id;
 	}
 	
-	public void setId(Long id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}
@@ -45,22 +45,22 @@ public class Conversation {
 
 	public String getCreationDate() 
 	{
-		return date_creation;
+		return creation_date;
 	}
 
 	public void setCreationDate(String date_creation) 
 	{
-		this.date_creation = date_creation;
+		this.creation_date = date_creation;
 	}
 
-	public String getModifDate() 
+	public String getModificationDate() 
 	{
-		return date_modification;
+		return modification_date;
 	}
 
-	public void setModifDate(String date_modification) 
+	public void setModifDate(String modification_date) 
 	{
-		this.date_modification = date_modification;
+		this.modification_date = modification_date;
 	}
 
 	public ArrayList<Post> getPosts() 

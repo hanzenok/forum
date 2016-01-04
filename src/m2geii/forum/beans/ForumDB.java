@@ -61,7 +61,7 @@ public class ForumDB
     			
     			//ajout
     			result.next();
-    			user.setId(result.getLong(1));
+    			user.setId(result.getInt(1));
     		} 
     		catch (SQLException e) {e.printStackTrace();}
     	}
@@ -99,7 +99,7 @@ public class ForumDB
 			
 	    	//creation de user bean
 	    	user = new User();
-	    	user.setId(result.getLong(1));
+	    	user.setId(result.getInt(1));
 	    	user.setLogin(login);
 	    	user.setPass(pass);
 	    	user.setFirstname(result.getString(4));
@@ -141,7 +141,7 @@ public class ForumDB
 			
 	    	//creation de user bean
 	    	user = new User();
-	    	user.setId(result.getLong(1));
+	    	user.setId(result.getInt(1));
 	    	user.setLogin(login);
 	    	user.setFirstname(result.getString(4));
 	    	user.setSecondname(result.getString(5));
@@ -177,11 +177,14 @@ public class ForumDB
 			{
 				//creation de bean conversation
 				Conversation conversation = new Conversation();
-				conversation.setId(result.getLong(1));
+				conversation.setId(result.getInt(1));
 				conversation.setAuthor(getUser(result.getString(2)));
 				conversation.setTitle(result.getString(3));
 				conversation.setCreationDate(result.getString(5));
 				conversation.setModifDate(result.getString(5));
+				
+				//reccuperation des post
+				conversation.setPosts(getPosts(conversation.getId()));
 				
 				//ajout dans la liste
 				conversations.add(conversation);
@@ -191,6 +194,51 @@ public class ForumDB
     	} 
     	catch (SQLException e) {e.printStackTrace();}
     	
-		return null;
+		return conversations;
+	}
+	
+	ArrayList<Post> getPosts(int id_conversation)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	ArrayList<Post> posts = null;
+		
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM posts WHERE id_conversation = ?;");
+			
+			//attributes
+			stat.setInt(1, id_conversation);
+			
+			//execution
+			result = stat.executeQuery();
+			
+			//reccuperation
+			posts = new ArrayList<Post>();
+			while(result.next())
+			{
+				//creation de bean post
+				Post post = new Post();
+				post.setId(result.getInt(1));
+				post.setNumber(result.getInt(3));
+				post.setAuthor(getUser(result.getString(4)));
+				post.setDate(result.getString(5));
+				post.setDate(result.getString(6));
+				
+				System.out.print("[" + post.getId() + " " + post.getAuthor().getLogin() + "] ");
+				
+				//ajout dans la liste
+				posts.add(post);
+			}
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+    	
+		return posts;
 	}
 }
