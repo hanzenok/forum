@@ -37,10 +37,10 @@
 
 			</table>
 			
-			<label for="new_conversation">
-					<input type="text" name="input_add" id="input_add" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="128">
+			<form method="post" action="CreateConversation">
+					<input type="text" name="title" id="title" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="128">
 					<input type="submit" class="btn-minimal" id="btn_add" value="Ajouter">
-			</label>
+			</form>
 			
 		</section>
 

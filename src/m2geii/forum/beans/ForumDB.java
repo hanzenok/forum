@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.joda.time.DateTime;
-
 public class ForumDB 
 {
 	private final String BD_URL = "jdbc:mysql://localhost:3306/forum";
@@ -74,7 +72,6 @@ public class ForumDB
 			if(stat != null) stat.close();
 		} 
 		catch (SQLException e) {e.printStackTrace();}
-    	
     	
 		return status;
 	}
@@ -211,11 +208,46 @@ public class ForumDB
 	    	//cloture de connexion
 	    	if(conn != null) conn.close();
 	    	if(stat != null) stat.close();
-	 
     	} 
     	catch (SQLException e) {e.printStackTrace();}
     	
 		return conversations;
+	}
+	
+	public int createConversation(User user, String title)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	int status = -1;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("INSERT INTO conversations (author, title, creation_date, modification_date)"
+					+ " VALUES (?, ?, NOW(), NOW());");
+			
+			//attributes
+			stat.setString(1, user.getLogin());
+			stat.setString(2, title);
+			
+			//execution
+			status = stat.executeUpdate();
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+    	
+    	//cloture de connexion
+		try 
+		{
+			if(conn != null) conn.close();
+			if(stat != null) stat.close();
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+    	
+		return status;
 	}
 	
 	ArrayList<Post> getPosts(int id_conversation)

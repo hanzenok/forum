@@ -1,7 +1,5 @@
 package m2geii.forum.beans;
 
-import org.joda.time.DateTime;
-
 public class Post {
 
 	private int id;
