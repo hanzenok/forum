@@ -6,8 +6,8 @@ import org.joda.time.DateTime;
 
 public class Conversation {
 	
+	private Long id;
 	private User author;
-	
 	private String title;
 	
 	private DateTime date_creation;
@@ -15,6 +15,16 @@ public class Conversation {
 	
 	private ArrayList<Post> posts;
 
+	
+	public Long getId()
+	{
+		return id;
+	}
+	
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	public User getAuthor() 
 	{
