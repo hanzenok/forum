@@ -2,16 +2,14 @@ package m2geii.forum.beans;
 
 import java.util.ArrayList;
 
-import org.joda.time.DateTime;
-
 public class Conversation {
 	
 	private Long id;
 	private User author;
 	private String title;
 	
-	private DateTime date_creation;
-	private DateTime date_modification;
+	private String date_creation;
+	private String date_modification;
 	
 	private ArrayList<Post> posts;
 
@@ -45,22 +43,22 @@ public class Conversation {
 		this.title = title;
 	}
 
-	public DateTime getCreationDate() 
+	public String getCreationDate() 
 	{
 		return date_creation;
 	}
 
-	public void setCreationDate(DateTime date_creation) 
+	public void setCreationDate(String date_creation) 
 	{
 		this.date_creation = date_creation;
 	}
 
-	public DateTime getModifDate() 
+	public String getModifDate() 
 	{
 		return date_modification;
 	}
 
-	public void setModifDate(DateTime date_modification) 
+	public void setModifDate(String date_modification) 
 	{
 		this.date_modification = date_modification;
 	}
@@ -74,7 +72,4 @@ public class Conversation {
 	{
 		this.posts = posts;
 	}
-	
-	
-	
 }

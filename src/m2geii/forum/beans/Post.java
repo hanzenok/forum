@@ -8,7 +8,7 @@ public class Post {
 	private int number;
 	
 	private User author;
-	private DateTime date;
+	private String date;
 	private String text;
 	
 	
@@ -42,12 +42,12 @@ public class Post {
 		this.author = author;
 	}
 	
-	public DateTime getDate() 
+	public String getDate() 
 	{
 		return date;
 	}
 	
-	public void setDate(DateTime date) 
+	public void setDate(String date) 
 	{
 		this.date = date;
 	}

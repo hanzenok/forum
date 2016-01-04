@@ -40,7 +40,7 @@ public class Index extends HttpServlet {
     	
     	//reccuperation de user bean de la bd
     	ForumDB db = new ForumDB();
-    	User user = db.getUser(login, pass);
+    	User user = db.checkUser(login, pass);
 		
 		String message = "";
 		if(user == null)

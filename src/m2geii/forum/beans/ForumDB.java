@@ -2,11 +2,13 @@ package m2geii.forum.beans;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
-import java.sql.PreparedStatement;
+import org.joda.time.DateTime;
 
 public class ForumDB 
 {
@@ -35,7 +37,7 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("INSERT INTO users (login, pass, firstname, secondname) VALUES (?, ?, ?, ?)"
+			stat = conn.prepareStatement("INSERT INTO users (login, pass, firstname, secondname) VALUES (?, ?, ?, ?);"
 					, Statement.RETURN_GENERATED_KEYS);
 			
 			//attributes
@@ -67,7 +69,7 @@ public class ForumDB
 		return status;
 	}
 	
-	public User getUser(String login, String pass)
+	public User checkUser(String login, String pass)
 	{
     	Connection conn = null;
     	PreparedStatement stat = null;
@@ -81,7 +83,7 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("SELECT * FROM users WHERE login = ? AND pass = ?");
+			stat = conn.prepareStatement("SELECT * FROM users WHERE login = ? AND pass = ?;");
 			
 			//attributes
 			stat.setString(1, login);
@@ -109,5 +111,86 @@ public class ForumDB
     	return user;
 	}
 	
+	//pas de mdp
+	public User getUser(String login)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	User user = null;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM users WHERE login = ?;");
+			
+			//attributes
+			stat.setString(1, login);
+			
+			//execution
+			result = stat.executeQuery();
+			result.next();
+			
+			//si il y a plusieur ou aucune ligne
+			if(result.getRow() != 1) 
+				return null;
+			
+	    	//creation de user bean
+	    	user = new User();
+	    	user.setId(result.getLong(1));
+	    	user.setLogin(login);
+	    	user.setFirstname(result.getString(4));
+	    	user.setSecondname(result.getString(5));
+	 
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+
+    	return user;
+	}	
 	
+	public ArrayList<Conversation> getConversations()
+	{	
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	ArrayList<Conversation> conversations = null;
+		
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM conversations;");
+			
+			//execution
+			result = stat.executeQuery();
+			
+			//reccuperation
+			conversations = new ArrayList<Conversation>();
+			while(result.next())
+			{
+				//creation de bean conversation
+				Conversation conversation = new Conversation();
+				conversation.setId(result.getLong(1));
+				conversation.setAuthor(getUser(result.getString(2)));
+				conversation.setTitle(result.getString(3));
+				conversation.setCreationDate(result.getString(5));
+				conversation.setModifDate(result.getString(5));
+				
+				//ajout dans la liste
+				conversations.add(conversation);
+				System.out.println(conversation.getTitle() + ": " + conversation.getAuthor().getLogin() + ": " + result.getString(4) );
+			}
+	 
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+    	
+		return null;
+	}
 }
