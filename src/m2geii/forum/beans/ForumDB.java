@@ -66,6 +66,16 @@ public class ForumDB
     		catch (SQLException e) {e.printStackTrace();}
     	}
     	
+    	//cloture de connexion
+    	
+		try 
+		{
+			if(conn != null) conn.close();
+			if(stat != null) stat.close();
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+    	
+    	
 		return status;
 	}
 	
@@ -104,6 +114,10 @@ public class ForumDB
 	    	user.setPass(pass);
 	    	user.setFirstname(result.getString(4));
 	    	user.setSecondname(result.getString(5));
+	    	
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
 	 
     	} 
     	catch (SQLException e) {e.printStackTrace();}
@@ -145,6 +159,10 @@ public class ForumDB
 	    	user.setLogin(login);
 	    	user.setFirstname(result.getString(4));
 	    	user.setSecondname(result.getString(5));
+	    	
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
 	 
     	} 
     	catch (SQLException e) {e.printStackTrace();}
@@ -188,8 +206,11 @@ public class ForumDB
 				
 				//ajout dans la liste
 				conversations.add(conversation);
-				System.out.println(conversation.getTitle() + ": " + conversation.getAuthor().getLogin() + ": " + result.getString(4) );
 			}
+			
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
 	 
     	} 
     	catch (SQLException e) {e.printStackTrace();}
@@ -231,11 +252,13 @@ public class ForumDB
 				post.setDate(result.getString(5));
 				post.setDate(result.getString(6));
 				
-				System.out.print("[" + post.getId() + " " + post.getAuthor().getLogin() + "] ");
-				
 				//ajout dans la liste
 				posts.add(post);
 			}
+			
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
     	} 
     	catch (SQLException e) {e.printStackTrace();}
     	

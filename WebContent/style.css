@@ -100,7 +100,6 @@ section.form {
 	}
 
 /*==========================labels==========================*/
-
 form.minimal label {
 
 	display: block; /*afficher des labels en block*/
@@ -110,7 +109,8 @@ form.minimal label {
 /*================inputs=============================*/
 form.minimal input[type="text"],
 form.minimal input[type="password"],
-form.minimal textarea {
+form.minimal textarea,
+#input_add{
 
 	background-color: rgb(255,255,255);
 	border-radius: 5px;
@@ -125,7 +125,6 @@ form.minimal textarea {
 	width: 100%;
 	
 }
-
 
 	/*bleu en cliquant pour tout les inputs*/
 	input[type="text"]:focus,
@@ -147,7 +146,12 @@ form.minimal textarea {
 		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgb(248,66,66);
 	}
 
-
+	#input_add{
+		
+		width: 30%;
+		display: inline;
+	}
+	
 	/*la couleur de la placeholder*/
 	::-webkit-input-placeholder {
 		color:    rgb( 100, 100, 100 );
@@ -213,12 +217,38 @@ form.minimal textarea {
 			box-shadow: 0 1px 1px rgba(0,0,0,0.15) inset !important;
 			text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25) !important;
 		}	
-
-/*titre de formulaire*/
+		
+		.btn-minimal#btn_add{
+			
+			font-size: .6em !important;
+			width: 10%;
+		}
+/*======================titre de formulaire===========================*/
 h2 {
 
 	color: rgb(34,34,34);
 	font-size: 2.2em;	
 	font-weight: 400;
 	margin: 0 0 24px 0;
+}
+
+/*==============================table======================================*/
+table{
+	
+	width: 100%;
+}
+
+tr.core{
+	
+	border: 1px solid lightgray;
+}
+	tr.core:hover{
+		
+		cursor: pointer;
+		cursor: hand;
+		background-color: #9CC7FB;
+	}
+
+td{
+	text-align:center;
 }

@@ -22,12 +22,12 @@
 				<tr>
 					<th>Author</th>
 					<th>Titre</th>
-					<th>Date de creation</th>
+					<th>Date de cr&eacute;ation</th>
 					<th>Dernier modification</th>
 				</tr>
 
 				<c:forEach items="${conversations}" var="conversation">
-					<tr>
+					<tr class="core">
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>
 						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
@@ -36,6 +36,12 @@
 				</c:forEach>
 
 			</table>
+			
+			<label for="new_conversation">
+					<input type="text" name="input_add" id="input_add" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="128">
+					<input type="submit" class="btn-minimal" id="btn_add" value="Ajouter">
+			</label>
+			
 		</section>
 
 	</body>
