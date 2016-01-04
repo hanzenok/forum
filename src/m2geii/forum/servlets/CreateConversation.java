@@ -31,13 +31,16 @@ public class CreateConversation extends HttpServlet
 		//reccuperation des parametres
 		String title = request.getParameter(FIELD_TITLE);
 		
-		//reccuperation de user actuel
-		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute(ATT_USER);
-		
-		//ajout dans la bd
-		ForumDB bd = new ForumDB();
-		bd.createConversation(user, title);
+		if (!title.equals(""))
+		{
+			//reccuperation de user actuel
+			HttpSession session = request.getSession();
+			User user = (User)session.getAttribute(ATT_USER);
+			
+			//ajout dans la bd
+			ForumDB bd = new ForumDB();
+			bd.createConversation(user, title);
+		}
 		
 		//rediriger vers la page principale
 		response.sendRedirect(SERVLET_MAIN);

@@ -27,7 +27,7 @@
 				</tr>
 
 				<c:forEach items="${conversations}" var="conversation">
-					<tr class="core">
+					<tr class="core" onclick="test">
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>
 						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
