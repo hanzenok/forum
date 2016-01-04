@@ -16,7 +16,7 @@ public class CreateClient extends HttpServlet {
 	private static final long serialVersionUID = 4373874692137096820L;
 
 	public static final String VIEW_REGISTER = "/WEB-INF/register.jsp";
-	public static final String VIEW_MAIN = "/forum/main";
+	public static final String SERVLET_MAIN = "/forum/main";
 	
 	public static final String FIELD_LOGIN = "login";
 	public static final String FIELD_PASS1 = "password";
@@ -79,7 +79,7 @@ public class CreateClient extends HttpServlet {
     	HttpSession session = request.getSession();
     	session.setAttribute(ATT_USER, user);
     	
-    	response.sendRedirect(VIEW_MAIN);
+    	response.sendRedirect(SERVLET_MAIN);
     		
     }
 }

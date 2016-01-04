@@ -11,39 +11,41 @@
 	
 	<body>
 
-		<section class="form" id="form">
-		
-			<h2>Cr&eacute;er un compte</h2>
+		<div data-role="main">
+			<section class="form" id="form">
 			
-			<form method="post" action="CreateClient" class="minimal">
+				<h2>Cr&eacute;er un compte</h2>
 				
-				<label for="login">
-					<!-- Majuscules ou minisucles ou underscore ou chiffres -->
-					<input type="text" name="login" id="login" placeholder="Login" pattern=".{4,32}" maxlength="32" value="<c:out value="${param.login}"/>" required>
-				</label>
-				
-				<label for="password">
-					<!-- Majuscules et minisucles et chiffres -->
-					<input type="password" name="password" id="mdp1" placeholder="Mot de passe" pattern=".{6,32}" maxlength="32" required>
-				</label>
-
-				<label for="password2">
-					<input type="password" name="password2" id="mdp2" placeholder="Confirm&eacute;ez le mot de passe" pattern=".{6,32}" maxlength="32" required>
-				</label>
-
-				<label for="name">
-					<input type="text" name="firstname" id="firstname" placeholder="Nom" value="<c:out value="${param.firstname}"/>" maxlength="32">
-					<input type="text" name="secondname" id="secondname" placeholder="Prenom" value="<c:out value="${param.secondname}"/>" maxlength="32">
-				</label>
-
-				<input type="submit" class="btn-minimal" value="M'inscrire">
-
-		   </form>
-
-			<%-- Affichage de la chaîne "message" transmise par la servlet --%>
-        	<p class="info">${message}</p>
-
-	   </section>
+				<form method="post" action="CreateClient" class="minimal">
+					
+					<label for="login">
+						<!-- Majuscules ou minisucles ou underscore ou chiffres -->
+						<input type="text" name="login" id="login" placeholder="Login" pattern=".{4,32}" maxlength="32" value="<c:out value="${param.login}"/>" required>
+					</label>
+					
+					<label for="password">
+						<!-- Majuscules et minisucles et chiffres -->
+						<input type="password" name="password" id="mdp1" placeholder="Mot de passe" pattern=".{6,32}" maxlength="32" required>
+					</label>
+	
+					<label for="password2">
+						<input type="password" name="password2" id="mdp2" placeholder="Confirm&eacute;ez le mot de passe" pattern=".{6,32}" maxlength="32" required>
+					</label>
+	
+					<label for="name">
+						<input type="text" name="firstname" id="firstname" placeholder="Nom" value="<c:out value="${param.firstname}"/>" maxlength="32">
+						<input type="text" name="secondname" id="secondname" placeholder="Prenom" value="<c:out value="${param.secondname}"/>" maxlength="32">
+					</label>
+	
+					<input type="submit" class="btn-minimal" value="M'inscrire">
+	
+			   </form>
+	
+				<%-- Affichage de la chaîne "message" transmise par la servlet --%>
+	        	<p>${message}</p>
+	
+		   </section>
+	   </div>
 	
 	</body>
 	

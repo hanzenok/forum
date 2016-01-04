@@ -28,7 +28,7 @@ public class ForumDB
     	ResultSet result = null;
     	int status = -1;
     	
-    	//execution
+    	//sql
     	try 
     	{
     		//connexion
@@ -58,12 +58,54 @@ public class ForumDB
     			result = stat.getGeneratedKeys();
     			
     			//ajout
-    			while(result.next())
-    				user.setId(result.getLong(1));
+    			result.next();
+    			user.setId(result.getLong(1));
     		} 
     		catch (SQLException e) {e.printStackTrace();}
     	}
     	
 		return status;
+	}
+	
+	public User getUser(String login, String pass)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	User user = null;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM users WHERE login = ? AND pass = ?");
+			
+			//attributes
+			stat.setString(1, login);
+			stat.setString(2, pass);
+			
+			//execution
+			result = stat.executeQuery();
+			result.next();
+			
+			//si il y a plusieur ou aucune ligne
+			if(result.getRow() != 1) 
+				return null;
+			
+	    	//creation de user bean
+	    	user = new User();
+	    	user.setId(result.getLong(1));
+	    	user.setLogin(login);
+	    	user.setPass(pass);
+	    	user.setFirstname(result.getString(4));
+	    	user.setSecondname(result.getString(5));
+	 
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+
+    	return user;
 	}
 }

@@ -12,7 +12,10 @@
 	<body>
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
-			<a href="logout.php" style="margin-top:10px;" >deconnexion</a>
+			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
+		</section>
+		<section class="form" id="forum">
+				<div id="agenda" ></div >
 		</section>
 
 	</body>

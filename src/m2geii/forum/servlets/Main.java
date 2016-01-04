@@ -10,17 +10,17 @@ public class Main extends HttpServlet
 {	
 	private static final long serialVersionUID = -4312652067101625925L;
 	
-	public static final String VIEW = "/WEB-INF/main.jsp";
+	public static final String VIEW_MAIN = "/WEB-INF/main.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 }
