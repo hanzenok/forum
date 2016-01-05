@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Inscription</title>
 		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	</head>
 	
 	<body>
@@ -27,7 +28,7 @@
 				</tr>
 
 				<c:forEach items="${conversations}" var="conversation">
-					<tr class="core" onclick="test">
+					<tr class="core">
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>
 						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
@@ -43,6 +44,20 @@
 			</form>
 			
 		</section>
+		
+		<script>
+			$(document).ready(function() {
+	
+			    $('tr').click(function() {
+			    	
+			        alert("test");
+		            
+			        
+					$.post('main', { name: "yo" });
+			    });
+	
+			});
+		</script>
 
 	</body>
 	

@@ -34,6 +34,8 @@ public class Main extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
+		System.out.println("yep " + request.getParameter("name"));
+		
 		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 }
