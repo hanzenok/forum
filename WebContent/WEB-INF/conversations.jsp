@@ -5,7 +5,7 @@
 <html>
      <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-		<title>Inscription</title>
+		<title>Forum</title>
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	</head>
@@ -21,13 +21,13 @@
 		
 			<table>
 				<tr>
-					<th>Author</th>
+					<th>Auteur</th>
 					<th>Titre</th>
 					<th>Date de cr&eacute;ation</th>
 					<th>Dernier modification</th>
 				</tr>
 
-				<c:forEach items="${conversations}" var="conversation">
+				<c:forEach items="${sessionScope.conversations}" var="conversation">
 					<tr class="core">
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>
@@ -49,11 +49,11 @@
 			$(document).ready(function() {
 	
 			    $('tr').click(function() {
-			    	
-			        alert("test");
 		            
-			        
-					$.post('main', { name: "yo" });
+			    	var row_index = this.rowIndex - 1;
+			    	
+					$.post('main', { conversation_index: row_index });
+					
 			    });
 	
 			});
