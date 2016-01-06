@@ -45,7 +45,7 @@ public class Index extends HttpServlet {
 		String message = "";
 		if(user == null)
 		{
-    		message = "Login ou mot de passe inexistante";
+    		message = "Login ou mot de passe incorrect";
     		
         	request.setAttribute(ATT_MESSAGE, message);  	
         	this.getServletContext().getRequestDispatcher(VIEW_INDEX).forward(request, response);

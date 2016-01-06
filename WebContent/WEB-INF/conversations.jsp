@@ -6,7 +6,7 @@
      <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Forum</title>
-		<link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css" />
 	</head>
 	
 	<body>
