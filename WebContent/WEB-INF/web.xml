@@ -41,13 +41,21 @@
     <servlet-name>DisconnectClient</servlet-name>
     <url-pattern>/disconnect</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>CreateConversation</servlet-name>
     <servlet-class>m2geii.forum.servlets.CreateConversation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateConversation</servlet-name>
     <url-pattern>/CreateConversation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>PostsServlet</servlet-name>
+  	<servlet-class>m2geii.forum.servlets.PostsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PostsServlet</servlet-name>
+  	<url-pattern>/main/posts</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index</welcome-file>

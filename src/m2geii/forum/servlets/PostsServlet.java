@@ -1,6 +1,7 @@
 package m2geii.forum.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -10,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import m2geii.forum.beans.Conversation;
-import m2geii.forum.beans.ForumDB;
 
-public class Main extends HttpServlet 
+public class PostsServlet extends HttpServlet 
 {	
-	private static final long serialVersionUID = -4312652067101625925L;
+	private static final long serialVersionUID = -8335553417683716525L;
 	
 	public static final String VIEW_CONVERSATIONS = "/WEB-INF/conversations.jsp";
+	public static final String VIEW_POSTS = "/WEB-INF/conversation.jsp";
 	
 	public static final String ATT_CONVS = "conversations";
 	public static final String ATT_CONV = "conversation";
@@ -25,20 +26,24 @@ public class Main extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
-		//reccuperer les conversations de la db
-		ForumDB db = new ForumDB();
-		ArrayList<Conversation> conversations = db.getConversations();
+		//l'indice de conversation cliquee
+		int conversation_index = Integer.parseInt(request.getParameter(ATT_CONV_INDEX));
 		
-		//session
+		//reccuperation des conversations
 		HttpSession session = request.getSession();
-		session.setAttribute(ATT_CONVS, conversations);
+		ArrayList<Conversation> conversations = (ArrayList<Conversation>) session.getAttribute(ATT_CONVS);
 		
-		this.getServletContext().getRequestDispatcher(VIEW_CONVERSATIONS).forward(request, response);
+		//passer une conversation a la vue
+		Conversation conversation = conversations.get(conversation_index);
+		request.setAttribute(ATT_CONV, conversation);
+		
+		this.getServletContext().getRequestDispatcher(VIEW_POSTS).forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
-		this.getServletContext().getRequestDispatcher(VIEW_CONVERSATIONS).forward(request, response);
+		
 	}
 }
+
