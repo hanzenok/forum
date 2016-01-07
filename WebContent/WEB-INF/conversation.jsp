@@ -37,6 +37,11 @@
 
 			</table>
 			
+			<form method="post" action="AddPost">
+					<input type="text" name="addpost" id="addpost" style="margin-left:30%;" placeholder="Votre commentaire" maxlength="128">
+					<input type="submit" class="btn-minimal" id="btn_add" value="Ajouter">
+			</form>
+			
 		</section>
 
 	</body>

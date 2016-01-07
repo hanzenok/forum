@@ -72,4 +72,9 @@ public class Conversation {
 	{
 		this.posts = posts;
 	}
+	
+	public int getNbPosts()
+	{
+		return posts.size();
+	}
 }

@@ -50,12 +50,20 @@
     <url-pattern>/CreateConversation</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>PostsServlet</servlet-name>
-  	<servlet-class>m2geii.forum.servlets.PostsServlet</servlet-class>
+    <servlet-name>PostsServlet</servlet-name>
+    <servlet-class>m2geii.forum.servlets.PostsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>PostsServlet</servlet-name>
-  	<url-pattern>/main/posts</url-pattern>
+    <servlet-name>PostsServlet</servlet-name>
+    <url-pattern>/main/posts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>AddPost</servlet-name>
+  	<servlet-class>m2geii.forum.servlets.AddPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddPost</servlet-name>
+  	<url-pattern>/main/AddPost</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index</welcome-file>
