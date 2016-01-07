@@ -37,16 +37,17 @@ public class AddPost extends HttpServlet {
 	{
 		//reccuperation des parametres
 		String post_text = request.getParameter(FIELD_POST);
-		Conversations conversations = null;
+		
+		//session
+		HttpSession session = request.getSession();
+		Conversations conversations = (Conversations)session.getAttribute(ATT_CONVS);
 		
 		if(!post_text.equals(""))
 		{
 			//reccuperation de user actuel
-			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute(ATT_USER);
 			
 			//reccuperation de conversation courante
-			conversations = (Conversations)session.getAttribute(ATT_CONVS);
 			Conversation conversation = conversations.getCurrentConversation();
 			
 			//creation de bean post

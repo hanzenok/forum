@@ -56,7 +56,7 @@
 			</ul>
 			
 			<form method="post" action="CreateConversation">
-					<input type="text" name="title" id="title" placeholder="Nouvelle conversation" maxlength="32">
+					<input type="text" name="title" id="title" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="32">
 					<input type="submit" class="btn-minimal" id="btn_add_conv" value="Ajouter">
 			</form>
 			
