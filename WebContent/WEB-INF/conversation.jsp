@@ -16,6 +16,12 @@
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
+		<section class="form" id="info">
+			<span style="margin-left:30%;font-size:1em;">
+				Conversation cr&eacute;e par <c:out value="${sessionScope.conversations.currentConversation.author.login}" />
+			 </span>
+		</section>
+		
 		<section class="form" id="forum">
 		
 			<table>

@@ -288,7 +288,7 @@ public class ForumDB
 				post.setNumber(result.getInt(3));
 				post.setAuthor(getUser(result.getString(4)));
 				post.setDate(result.getString(5));
-				post.setDate(result.getString(6));
+				post.setText(result.getString(6));
 				
 				//ajout dans la liste
 				posts.add(post);

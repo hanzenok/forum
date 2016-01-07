@@ -37,4 +37,21 @@ public class Conversations {
 		return conversations_list.get(current_conversation_index);
 	}
 	
+	public int getNbConversations()
+	{
+		return conversations_list.size();
+	}
+	
+	public int getNbPosts()
+	{
+		int n = 0;
+		
+		for(Conversation conversation : conversations_list)
+		{
+			n += conversation.getNbPosts();
+		}
+		
+		return n;
+	}
+	
 }

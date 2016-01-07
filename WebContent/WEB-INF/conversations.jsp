@@ -16,6 +16,14 @@
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
+		<section class="form" id="info">
+			<span style="margin-left:30%;font-size:1em;">
+				Info:
+			 	<c:out value="${sessionScope.conversations.nbConversations}" /> conversations,
+			 	et  <c:out value="${sessionScope.conversations.nbPosts}" /> posts en total
+			 </span>
+		</section>
+		
 		<section class="form" id="forum">
 		
 			<table>

@@ -88,15 +88,26 @@ section.form {
 }
 	section.form#user{
 		
+		display:inline-block;
 		margin: 1%;
 		width: 30%;
+		height: 80px;
+	}
+	
+	section.form#info{
+		display:inline-block;
+		width: 66%;
+		position: absolute;
+		right:0px;
+		margin:1%;
+		height: 80px;
+	
 	}
 	
 	section.form#forum{
 		
 		margin: 1%;
 		width: 98%;
-		height: 98%;
 	}
 
 /*==========================labels==========================*/
@@ -150,6 +161,9 @@ form.minimal textarea,
 		
 		width: 30%;
 		display: inline;
+	}
+	#addpost{
+		line-height: 3em;
 	}
 	
 	/*la couleur de la placeholder*/
