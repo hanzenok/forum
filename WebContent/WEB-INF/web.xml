@@ -50,11 +50,11 @@
     <url-pattern>/CreateConversation</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>PostsServlet</servlet-name>
-    <servlet-class>m2geii.forum.servlets.PostsServlet</servlet-class>
+    <servlet-name>Posts</servlet-name>
+    <servlet-class>m2geii.forum.servlets.Posts</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PostsServlet</servlet-name>
+    <servlet-name>Posts</servlet-name>
     <url-pattern>/main/posts</url-pattern>
   </servlet-mapping>
   <servlet>

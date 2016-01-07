@@ -1,8 +1,6 @@
 package m2geii.forum.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import m2geii.forum.beans.Conversation;
 import m2geii.forum.beans.Conversations;
 import m2geii.forum.beans.User;
 
-public class PostsServlet extends HttpServlet 
+public class Posts extends HttpServlet 
 {	
 	private static final long serialVersionUID = -8335553417683716525L;
 	
