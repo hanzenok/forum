@@ -18,7 +18,7 @@ public class AddPost extends HttpServlet {
 
 	private static final long serialVersionUID = -535869300843163393L;
 
-	public static final String VIEW_POSTS = "/WEB-INF/conversation.jsp";
+	public static final String VIEW_POSTS = "/WEB-INF/posts.jsp";
 	
 	public static final String FIELD_POST = "addpost";
 	
