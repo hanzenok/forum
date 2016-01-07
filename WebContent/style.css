@@ -258,7 +258,7 @@ ul
 li{
 	margin-top:1%;
 	padding: 1%;
-    border: 1px solid lightgray;
+    background-color: lightgray;
     border-radius: 4px;
 }
 	li.core:hover{
@@ -271,5 +271,6 @@ li{
 /*==============================textarea=====================================*/
 textarea{
 	
+	width: 88%;
 	resize: none;
 }

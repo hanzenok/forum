@@ -15,14 +15,13 @@
 		<!-- login d'utilisateur -->
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
+			<img alt="picture" src="${pageContext.request.contextPath}/forum.png" width="16px" height="16px">
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
 		<section class="form" id="info">
-			<span style="margin-left:30%;font-size:1em;">
-				Info:
-			 	<c:out value="${sessionScope.conversations.nbConversations}" /> conversations,
-			 	et  <c:out value="${sessionScope.conversations.nbPosts}" /> posts en total
+			<span style="font-size:1.8em;">
+				Bienvenu sur le forum!
 			 </span>
 		</section>
 		

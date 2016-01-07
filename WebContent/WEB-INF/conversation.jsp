@@ -14,6 +14,7 @@
 	
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
+			<img alt="picture" src="${pageContext.request.contextPath}/forum.png" width="16px" height="16px">
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
@@ -55,7 +56,7 @@
 		
 			<div style="display:inline-block;position:fixed; bottom:4%; left:2%;width:98%;">
 				<form method="post" action="AddPost">
-					<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3" cols="150"></textarea>
+					<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3"></textarea>
 					<input type="submit" class="btn-minimal" id="btn_add_post" value="Ajouter">
 				</form>
 			</div>
