@@ -37,6 +37,7 @@ public class AddPost extends HttpServlet {
 	{
 		//reccuperation des parametres
 		String post_text = request.getParameter(FIELD_POST);
+		Conversations conversations = null;
 		
 		if(!post_text.equals(""))
 		{
@@ -45,7 +46,7 @@ public class AddPost extends HttpServlet {
 			User user = (User)session.getAttribute(ATT_USER);
 			
 			//reccuperation de conversation courante
-			Conversations conversations = (Conversations)session.getAttribute(ATT_CONVS);
+			conversations = (Conversations)session.getAttribute(ATT_CONVS);
 			Conversation conversation = conversations.getCurrentConversation();
 			
 			//creation de bean post
@@ -65,7 +66,7 @@ public class AddPost extends HttpServlet {
 		}
 		
 		//redirection
-		this.getServletContext().getRequestDispatcher(VIEW_POSTS).forward(request, response);
+		response.sendRedirect("/forum/main/posts?conversation_index=" + conversations.getCurrentConversationIndex());
 	}
 
 }
