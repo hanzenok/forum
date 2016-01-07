@@ -196,8 +196,7 @@ public class ForumDB
 				conversation.setId(result.getInt(1));
 				conversation.setAuthor(getUser(result.getString(2)));
 				conversation.setTitle(result.getString(3));
-				conversation.setCreationDate(result.getString(5));
-				conversation.setModifDate(result.getString(5));
+				conversation.setCreationDate(result.getString(4));
 				
 				//reccuperation des post
 				conversation.setPosts(getPosts(conversation.getId()));
@@ -233,8 +232,8 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("INSERT INTO conversations (author, title, creation_date, modification_date)"
-					+ " VALUES (?, ?, NOW(), NOW());");
+			stat = conn.prepareStatement("INSERT INTO conversations (author, title, creation_date)"
+					+ " VALUES (?, ?, NOW());");
 			
 			//attributes
 			stat.setString(1, user.getLogin());

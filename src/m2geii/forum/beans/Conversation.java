@@ -9,7 +9,6 @@ public class Conversation {
 	private String title;
 	
 	private String creation_date;
-	private String modification_date;
 	
 	private ArrayList<Post> posts;
 
@@ -51,16 +50,6 @@ public class Conversation {
 	public void setCreationDate(String date_creation) 
 	{
 		this.creation_date = date_creation;
-	}
-
-	public String getModificationDate() 
-	{
-		return modification_date;
-	}
-
-	public void setModifDate(String modification_date) 
-	{
-		this.modification_date = modification_date;
 	}
 
 	public ArrayList<Post> getPosts() 

@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Forum</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css" />
+		<link rel="icon" href="forum.png" type="image/png" sizes="16x16">
 	</head>
 	
 	<body>
@@ -31,7 +32,7 @@
 					<th>Auteur</th>
 					<th>Titre</th>
 					<th>Date de cr&eacute;ation</th>
-					<th>Dernier modification</th>
+					<th>Nombre des posts</th>
 				</tr>
 
 				<c:forEach items="${sessionScope.conversations.conversationsList}" var="conversation" varStatus="status">
@@ -39,7 +40,7 @@
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>
 						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
-						<td> <c:out value="${conversation.modificationDate}"></c:out> </td>
+						<td> <c:out value="${conversation.nbPosts}"></c:out> </td>
 					</tr>
 				</c:forEach>
 

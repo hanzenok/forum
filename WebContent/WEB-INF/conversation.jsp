@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Forum</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css" />
+		<link rel="icon" href="forum.png" type="image/png" sizes="16x16">
 	</head>
 	
 	<body>
@@ -33,7 +34,7 @@
 				</tr>
 
 				<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post">
-					<tr class="core">
+					<tr>
 						<td> <c:out value="${post.number}"></c:out> </td>
 						<td> <c:out value="${post.author.login}"></c:out> </td>
 						<td> <c:out value="${post.text}"></c:out> </td>
