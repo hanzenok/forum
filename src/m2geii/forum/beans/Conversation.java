@@ -77,4 +77,9 @@ public class Conversation {
 	{
 		return posts.size();
 	}
+	
+	public void addPost(Post p)
+	{
+		posts.add(p);
+	}
 }

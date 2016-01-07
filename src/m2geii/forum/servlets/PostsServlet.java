@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import m2geii.forum.beans.Conversation;
+import m2geii.forum.beans.Conversations;
 
 public class PostsServlet extends HttpServlet 
 {	
@@ -31,12 +32,10 @@ public class PostsServlet extends HttpServlet
 		
 		//reccuperation des conversations
 		HttpSession session = request.getSession();
-		ArrayList<Conversation> conversations = (ArrayList<Conversation>) session.getAttribute(ATT_CONVS);
+		Conversations conversations = (Conversations) session.getAttribute(ATT_CONVS);
+		conversations.setCurrentConversation(conversation_index);
 		
-		//passer une conversation a la vue
-		Conversation conversation = conversations.get(conversation_index);
-		request.setAttribute(ATT_CONV, conversation);
-		
+		//redirection
 		this.getServletContext().getRequestDispatcher(VIEW_POSTS).forward(request, response);
 	}
 	

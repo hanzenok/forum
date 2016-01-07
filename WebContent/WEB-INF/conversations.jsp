@@ -26,7 +26,7 @@
 					<th>Dernier modification</th>
 				</tr>
 
-				<c:forEach items="${sessionScope.conversations}" var="conversation" varStatus="status">
+				<c:forEach items="${sessionScope.conversations.conversationsList}" var="conversation" varStatus="status">
 					<tr class="core" onclick="location.href='main/posts?conversation_index=${status.count - 1}'">
 						<td> <c:out value="${conversation.author.login}"></c:out> </td>
 						<td> <c:out value="${conversation.title}"></c:out> </td>

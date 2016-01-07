@@ -26,7 +26,7 @@
 					<th>Date</th>
 				</tr>
 
-				<c:forEach items="${conversation.posts}" var="post">
+				<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post">
 					<tr class="core">
 						<td> <c:out value="${post.number}"></c:out> </td>
 						<td> <c:out value="${post.author.login}"></c:out> </td>

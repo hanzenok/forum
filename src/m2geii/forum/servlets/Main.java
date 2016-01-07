@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import m2geii.forum.beans.Conversation;
+import m2geii.forum.beans.Conversations;
 import m2geii.forum.beans.ForumDB;
 
 public class Main extends HttpServlet 
@@ -27,12 +28,13 @@ public class Main extends HttpServlet
 	{	
 		//reccuperer les conversations de la db
 		ForumDB db = new ForumDB();
-		ArrayList<Conversation> conversations = db.getConversations();
+		Conversations conversations = db.getConversations();
 		
 		//session
 		HttpSession session = request.getSession();
 		session.setAttribute(ATT_CONVS, conversations);
 		
+		//redirection
 		this.getServletContext().getRequestDispatcher(VIEW_CONVERSATIONS).forward(request, response);
 	}
 	

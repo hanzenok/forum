@@ -167,12 +167,13 @@ public class ForumDB
     	return user;
 	}	
 	
-	public ArrayList<Conversation> getConversations()
+	public Conversations getConversations()
 	{	
     	Connection conn = null;
     	PreparedStatement stat = null;
     	ResultSet result = null;
-    	ArrayList<Conversation> conversations = null;
+    	ArrayList<Conversation> conversations_list = null;
+    	Conversations conversations = null;
 		
     	//sql
     	try 
@@ -187,7 +188,7 @@ public class ForumDB
 			result = stat.executeQuery();
 			
 			//reccuperation
-			conversations = new ArrayList<Conversation>();
+			conversations_list = new ArrayList<Conversation>();
 			while(result.next())
 			{
 				//creation de bean conversation
@@ -202,12 +203,17 @@ public class ForumDB
 				conversation.setPosts(getPosts(conversation.getId()));
 				
 				//ajout dans la liste
-				conversations.add(conversation);
+				conversations_list.add(conversation);
 			}
 			
 	    	//cloture de connexion
 	    	if(conn != null) conn.close();
 	    	if(stat != null) stat.close();
+	    	
+	    	//creation de bean conversations
+	    	conversations = new Conversations();
+	    	conversations.setConversationsList(conversations_list);
+	    	
     	} 
     	catch (SQLException e) {e.printStackTrace();}
     	
@@ -295,5 +301,103 @@ public class ForumDB
     	catch (SQLException e) {e.printStackTrace();}
     	
 		return posts;
+	}
+	
+	public int addPost(String author, int number, String text, int conversation_id)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	int status = -1;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("INSERT INTO posts (id_conversation, number, author, date, text) VALUES (?, ?, ?, NOW(), ?);"
+					, Statement.RETURN_GENERATED_KEYS);
+			
+			//attributes
+			stat.setInt(1, conversation_id);
+			stat.setInt(2, number);
+			stat.setString(3,author);
+			stat.setString(4, text);
+			
+			//execution
+			status = stat.executeUpdate();
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+		
+    	//reccuperer l'id generee
+    	if(status != -1)
+    	{
+    		try 
+    		{
+    			//reccuperation de l'id
+    			result = stat.getGeneratedKeys();
+    			
+    			result.next();
+    			status = result.getInt(1);
+    		} 
+    		catch (SQLException e) {e.printStackTrace();}
+    	}
+    	
+    	//cloture de connexion
+    	
+		try 
+		{
+			if(conn != null) conn.close();
+			if(stat != null) stat.close();
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return status;
+	}
+	
+	public Post getPost(int post_id)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	Post post = null;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM posts WHERE id = ?;");
+			
+			//attributes
+			stat.setInt(1, post_id);
+			
+			//execution
+			result = stat.executeQuery();
+			result.next();
+			
+			//si il y a plusieur ou aucune ligne
+			if(result.getRow() != 1) 
+				return null;
+			
+	    	//creation de user bean
+	    	post = new Post();
+	    	post.setId(result.getInt(1));
+	    	post.setNumber(result.getInt(3));
+	    	post.setDate(result.getString(5));
+	    	post.setText(result.getString(6));
+	    	
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
+	 
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+
+    	return post;
 	}
 }
