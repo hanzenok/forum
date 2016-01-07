@@ -12,7 +12,7 @@ import m2geii.forum.beans.Conversations;
 import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
-public class Main extends HttpServlet 
+public class ConversationsServlet extends HttpServlet 
 {	
 	private static final long serialVersionUID = -4312652067101625925L;
 	

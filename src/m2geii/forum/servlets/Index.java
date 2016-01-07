@@ -16,7 +16,7 @@ public class Index extends HttpServlet {
 	private static final long serialVersionUID = 7098976741262951870L;
 	
 	public static final String VIEW_INDEX = "/WEB-INF/index.jsp";
-	public static final String SERVLET_MAIN = "/forum/main";
+	public static final String SERVLET_CONVERSATIONS = "/forum/conversations";
 	
 	public static final String FIELD_LOGIN = "login";
 	public static final String FIELD_PASS = "password";
@@ -56,7 +56,7 @@ public class Index extends HttpServlet {
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute(ATT_USER, user);
 	    	
-	    	response.sendRedirect(SERVLET_MAIN);
+	    	response.sendRedirect(SERVLET_CONVERSATIONS);
 		}
 	}
 

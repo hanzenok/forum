@@ -15,14 +15,14 @@ public class CreateConversation extends HttpServlet
 {
 	private static final long serialVersionUID = -7698256495601904630L;
 	
-	public static final String SERVLET_MAIN = "/forum/main";
+	public static final String SERVLET_CONVERSATIONS = "/forum/conversations";
 	public static final String FIELD_TITLE = "title";
 	public static final String ATT_USER = "user";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
-		response.sendRedirect(SERVLET_MAIN);
+		response.sendRedirect(SERVLET_CONVERSATIONS);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -43,7 +43,7 @@ public class CreateConversation extends HttpServlet
 		}
 		
 		//rediriger vers la page principale
-		response.sendRedirect(SERVLET_MAIN);
+		response.sendRedirect(SERVLET_CONVERSATIONS);
 	}
 
 }

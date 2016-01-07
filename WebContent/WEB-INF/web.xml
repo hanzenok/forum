@@ -26,12 +26,12 @@
     <url-pattern>/CreateClient</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Main</servlet-name>
-    <servlet-class>m2geii.forum.servlets.Main</servlet-class>
+    <servlet-name>ConversationsServlet</servlet-name>
+    <servlet-class>m2geii.forum.servlets.ConversationsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Main</servlet-name>
-    <url-pattern>/main</url-pattern>
+    <servlet-name>ConversationsServlet</servlet-name>
+    <url-pattern>/conversations</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>DisconnectClient</servlet-name>
@@ -50,12 +50,12 @@
     <url-pattern>/CreateConversation</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>PostsServlet</servlet-name>
-    <servlet-class>m2geii.forum.servlets.PostsServlet</servlet-class>
+    <servlet-name>ConversationServlet</servlet-name>
+    <servlet-class>m2geii.forum.servlets.ConversationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PostsServlet</servlet-name>
-    <url-pattern>/main/posts</url-pattern>
+    <url-pattern>/conversations/posts</url-pattern>
   </servlet-mapping>
   <servlet>
   	<servlet-name>AddPost</servlet-name>
@@ -63,7 +63,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>AddPost</servlet-name>
-  	<url-pattern>/main/AddPost</url-pattern>
+  	<url-pattern>/conversations/AddPost</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index</welcome-file>
