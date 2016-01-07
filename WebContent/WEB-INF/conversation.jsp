@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Forum</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css" />
-		<link rel="icon" href="forum.png" type="image/png" sizes="16x16">
+		<link rel="icon" href="${pageContext.request.contextPath}/forum.png" type="image/png" sizes="16x16">
 	</head>
 	
 	<body>
@@ -18,9 +18,12 @@
 		</section>
 		
 		<section class="form" id="info">
-			<span style="margin-left:30%;font-size:2em; font-weight:bold;">
+			<span style="font-size:2em; font-weight:bold;">
 				<c:out value="${sessionScope.conversations.currentConversation.title}" />
-			 </span>
+			</span>
+			<span>
+				( <c:out value="${sessionScope.conversations.currentConversation.nbPosts}"/> posts )
+			</span>
 		</section>
 		
 		<section class="form" id="forum">

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<title>Autentification</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
-		<link rel="icon" href="forum.png" type="image/png" sizes="16x16">
+		<link rel="icon" href="${pageContext.request.contextPath}/forum.png" type="image/png" sizes="16x16">
 	</head>
 
 	<body>
