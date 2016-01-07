@@ -17,13 +17,6 @@
 }
 
 
-/*=================annulater les styles de JQuery Mobile=================*/
-.ui-page{background:transparent !important;} 
-.ui-body-c{background:transparent !important;} 
-.ui-page-active{background:transparent !important;}
-.ui-link-inherit{ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
-
-
 /*=================style generale=================*/
 body {
 
@@ -95,6 +88,7 @@ section.form {
 	}
 	
 	section.form#info{
+	
 		display:inline-block;
 		width: 66%;
 		position: absolute;
@@ -110,6 +104,18 @@ section.form {
 		width: 98%;
 	}
 
+	section#post{
+		
+		width:80%;
+		margin: 1% auto;
+	}
+	
+	section#fill_space{
+		
+		margin:1% ;
+		width: 98%;
+		height: 100px;
+	}
 /*==========================labels==========================*/
 form.minimal label {
 
@@ -232,8 +238,7 @@ form.minimal textarea,
 		
 		.btn-minimal#btn_add_post{
 			
-			margin-left:39%;
-			width:30%;
+			width:10%;
 		}
 /*======================titre de formulaire===========================*/
 h2 {
@@ -251,7 +256,8 @@ ul
 }
 
 li{
-	margin:5px;
+	margin-top:1%;
+	padding: 1%;
     border: 1px solid lightgray;
     border-radius: 4px;
 }

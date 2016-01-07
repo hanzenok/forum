@@ -48,8 +48,8 @@
 						</span>
 						
 						<!-- nombre des posts dans la conversation -->
-						<span style="position:absolute;right:5%;">
-							<c:out value="${conversation.nbPosts}"></c:out>
+						<span style="position:absolute;right:5%;font-weight:bold;">
+							#<c:out value="${conversation.nbPosts}"></c:out>
 						</span>
 					</li>
 				</c:forEach>

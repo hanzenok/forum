@@ -26,36 +26,40 @@
 			</span>
 		</section>
 		
-		<section class="form" id="forum">
+		<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post">
+			<section class="form" id="post">
+				
+				<!-- post id -->
+				<span style="font-weight:bold;">
+					#<c:out value="${post.number}"></c:out>
+				</span>
+				
+				<!-- l'auteur de post -->
+				<span style="margin-left:5px;font-family:'Times New Roman'; font-size:1.4em; font-weight: bold; color:#4195fc;">
+					<c:out value="${post.author.login}"></c:out>
+				</span>
+				
+				<!-- text de post -->
+				<span style="font-size:1.1em;">
+					<c:out value="${post.text}"></c:out>
+				</span>
+				
+				<!-- date de creation de post -->
+				<span style="font-size:0.7em;font-stye:italic; position:absolute; right:12%;">
+					(<c:out value="${post.date}"></c:out>)
+				</span>
+			</section>
+		</c:forEach>
 		
-			<table>
-				<tr>
-					<th></th>
-					<th>Auteur</th>
-					<th></th>
-					<th>Date</th>
-				</tr>
-
-				<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post">
-					<tr>
-						<td> <c:out value="${post.number}"></c:out> </td>
-						<td> <c:out value="${post.author.login}"></c:out> </td>
-						<td> <c:out value="${post.text}"></c:out> </td>
-						<td> <c:out value="${post.date}"></c:out> </td>
-					</tr>
-				</c:forEach>
-
-			</table>
-			
-		</section>
+		<section class="form" id="fill_space"></section>
 		
-			<form method="post" action="AddPost">
-				<div style="margin-left: 30%;display:inline-block;posiiton:relative;">
-					<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3" cols="50"></textarea>
+			<div style="display:inline-block;position:fixed; bottom:4%; left:2%;width:98%;">
+				<form method="post" action="AddPost">
+					<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3" cols="150"></textarea>
 					<input type="submit" class="btn-minimal" id="btn_add_post" value="Ajouter">
-				</div>
-			</form>
-
+				</form>
+			</div>
+		
 	</body>
 	
 </html>
