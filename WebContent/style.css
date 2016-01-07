@@ -246,23 +246,20 @@ h2 {
 	margin: 0 0 24px 0;
 }
 
-/*==============================table======================================*/
-table{
-	
-	width: 100%;
+/*==============================listes======================================*/
+ul
+{
+    list-style-type: none;
 }
 
-tr.core{
-	
-	border: 1px solid lightgray;
+li{
+	margin:5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
 }
-	tr.core:hover{
+	li.core:hover{
 		
 		cursor: pointer;
 		cursor: hand;
 		background-color: #9CC7FB;
 	}
-
-td{
-	text-align:center;
-}

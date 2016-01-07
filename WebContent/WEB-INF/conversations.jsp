@@ -12,6 +12,7 @@
 	
 	<body>
 	
+		<!-- login d'utilisateur -->
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
 			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
@@ -27,24 +28,32 @@
 		
 		<section class="form" id="forum">
 		
-			<table>
-				<tr>
-					<th>Auteur</th>
-					<th>Titre</th>
-					<th>Date de cr&eacute;ation</th>
-					<th>Nombre des posts</th>
-				</tr>
-
+			<ul>
 				<c:forEach items="${sessionScope.conversations.conversationsList}" var="conversation" varStatus="status">
-					<tr class="core" onclick="location.href='main/posts?conversation_index=${status.count - 1}'">
-						<td> <c:out value="${conversation.author.login}"></c:out> </td>
-						<td> <c:out value="${conversation.title}"></c:out> </td>
-						<td> <c:out value="${conversation.creationDate}"></c:out> </td>
-						<td> <c:out value="${conversation.nbPosts}"></c:out> </td>
-					</tr>
+					<li class="core" onclick="location.href='main/posts?conversation_index=${status.count - 1}'">
+						
+						<!-- l'auteur de la conversation -->
+						<span style="margin-left:5px;font-family:'Times New Roman'; font-size:1.4em; font-weight: bold;display:inline-block;">
+							<c:out value="${conversation.author.login}"></c:out>
+						</span>
+						
+						<!-- date de creation de la conversation -->
+						<span style="font-size:0.7em;font-stye:italic;display:inline-block;">
+							(<c:out value="${conversation.creationDate}"></c:out>)
+						</span>
+						
+						<!-- titre de la conversation -->
+						<span style="font-size:1.6em;display:inline-block;position:absolute;left:30%;">
+							<c:out value="${conversation.title}"></c:out>
+						</span>
+						
+						<!-- nombre des posts dans la conversation -->
+						<span style="display:inlin-block;position:absolute;right:5%;">
+							<c:out value="${conversation.nbPosts}"></c:out>
+						</span>
+					</li>
 				</c:forEach>
-
-			</table>
+			</ul>
 			
 			<form method="post" action="CreateConversation">
 					<input type="text" name="title" id="title" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="128">
