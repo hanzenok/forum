@@ -18,8 +18,8 @@
 		</section>
 		
 		<section class="form" id="info">
-			<span style="margin-left:30%;font-size:1em;">
-				Conversation cr&eacute;e par <c:out value="${sessionScope.conversations.currentConversation.author.login}" />
+			<span style="margin-left:30%;font-size:2em; font-weight:bold;">
+				<c:out value="${sessionScope.conversations.currentConversation.title}" />
 			 </span>
 		</section>
 		
@@ -44,12 +44,14 @@
 
 			</table>
 			
-			<form method="post" action="AddPost">
-					<input type="text" name="addpost" id="addpost" style="margin-left:30%;" placeholder="Votre commentaire" maxlength="128">
-					<input type="submit" class="btn-minimal" id="btn_add" value="Ajouter">
-			</form>
-			
 		</section>
+		
+			<form method="post" action="AddPost">
+				<div style="margin-left: 30%;display:inline-block;posiiton:relative;">
+					<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3" cols="50"></textarea>
+					<input type="submit" class="btn-minimal" id="btn_add_post" value="Ajouter">
+				</div>
+			</form>
 
 	</body>
 	
