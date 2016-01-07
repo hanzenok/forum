@@ -12,17 +12,23 @@ public class DisconnectClient extends HttpServlet
 {	
 	private static final long serialVersionUID = 8226842651166524768L;
 	
-	public static final String VIEW_INDEX = "/WEB-INF/index.jsp";
+	public static final String SERVLET_INDEX = "/forum/index";
 
 	public static final String ATT_USER = "user";
+	public static final String ATT_CONVS = "conversations";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
+		//session
 		HttpSession session = request.getSession();
-		session.removeAttribute(ATT_USER);
 		
-		this.getServletContext().getRequestDispatcher(VIEW_INDEX).forward(request, response);
+		//suppression des attribus
+		session.removeAttribute(ATT_USER);
+		session.removeAttribute(ATT_CONVS);
+		
+		//redirection vers la page d'acceuil
+		response.sendRedirect(SERVLET_INDEX);
 	}
 
 }

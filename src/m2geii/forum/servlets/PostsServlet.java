@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import m2geii.forum.beans.Conversation;
 import m2geii.forum.beans.Conversations;
+import m2geii.forum.beans.User;
 
 public class PostsServlet extends HttpServlet 
 {	
@@ -19,7 +20,9 @@ public class PostsServlet extends HttpServlet
 	
 	public static final String VIEW_CONVERSATIONS = "/WEB-INF/conversations.jsp";
 	public static final String VIEW_POSTS = "/WEB-INF/conversation.jsp";
+	public static final String SERVLET_INDEX = "/forum/index";
 	
+	public static final String ATT_USER = "user";
 	public static final String ATT_CONVS = "conversations";
 	public static final String ATT_CONV = "conversation";
 	public static final String ATT_CONV_INDEX = "conversation_index";
@@ -27,11 +30,21 @@ public class PostsServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
+		//session
+		HttpSession session = request.getSession();
+		
+		//verification de user
+		User user = (User)session.getAttribute(ATT_USER);
+		if(user == null)
+		{
+			response.sendRedirect(SERVLET_INDEX);
+			return;
+		}
+		
 		//l'indice de conversation cliquee
 		int conversation_index = Integer.parseInt(request.getParameter(ATT_CONV_INDEX));
 		
 		//reccuperation des conversations
-		HttpSession session = request.getSession();
 		Conversations conversations = (Conversations) session.getAttribute(ATT_CONVS);
 		conversations.setCurrentConversation(conversation_index);
 		

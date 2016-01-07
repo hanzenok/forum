@@ -15,7 +15,7 @@
 		<section class="form" id="user">
 			<span style="margin-left:20px;font-size:1.6em;"> <c:out value="${sessionScope.user.login}" /> </span>
 			<img alt="picture" src="${pageContext.request.contextPath}/forum.png" width="16px" height="16px">
-			<a href="<c:url value="/index"/>" style="margin-top:10px;" >deconnexion</a>
+			<a href="<c:url value="/disconnect"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
 		<section class="form" id="info">
