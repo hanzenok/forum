@@ -24,6 +24,7 @@ public class AddUser extends HttpServlet {
 
 	public static final String VIEW_REGISTER = "/WEB-INF/register.jsp";
 	public static final String SERVLET_MAIN = "/forum/main";
+	public static final String SERVLET_INDEX = "/forum/index";
 	
 	public static final String FIELD_LOGIN = "login";
 	public static final String FIELD_PASS1 = "password";
@@ -43,6 +44,17 @@ public class AddUser extends HttpServlet {
 	 */
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         
+		//session
+		HttpSession session = request.getSession();
+		
+		//verification de user
+		User user = (User)session.getAttribute(ATT_USER);
+		if(user == null)
+		{
+			response.sendRedirect(SERVLET_INDEX);
+			return;
+		}
+    	
     	//reccuperation des parametres
     	String login = request.getParameter(FIELD_LOGIN);
     	String pass1 = request.getParameter(FIELD_PASS1);
@@ -63,7 +75,7 @@ public class AddUser extends HttpServlet {
     	}
 
     	//creation de user bean
-    	User user = new User();
+    	user = new User();
     	user.setLogin(login);
     	user.setFirstname(firstname);
     	user.setSecondname(secondname);
@@ -83,7 +95,6 @@ public class AddUser extends HttpServlet {
     	}
     	
     	//redirection vers la page principale
-    	HttpSession session = request.getSession();
     	session.setAttribute(ATT_USER, user);
     	
     	response.sendRedirect(SERVLET_MAIN);

@@ -24,7 +24,10 @@ public class AddConversation extends HttpServlet
 	private static final long serialVersionUID = -7698256495601904630L;
 	
 	public static final String SERVLET_MAIN = "/forum/main";
+	public static final String SERVLET_INDEX = "/forum/index";
+	
 	public static final String FIELD_TITLE = "title";
+	
 	public static final String ATT_USER = "user";
 
 	
@@ -38,14 +41,24 @@ public class AddConversation extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
+		//session
+		HttpSession session = request.getSession();
+		
+		//verification de user
+		User user = (User)session.getAttribute(ATT_USER);
+		if(user == null)
+		{
+			response.sendRedirect(SERVLET_INDEX);
+			return;
+		}
+		
 		//reccuperation des parametres
 		String title = request.getParameter(FIELD_TITLE);
 		
 		if (!title.equals(""))
 		{
 			//reccuperation de user actuel
-			HttpSession session = request.getSession();
-			User user = (User)session.getAttribute(ATT_USER);
+			user = (User)session.getAttribute(ATT_USER);
 			
 			//ajout dans la bd
 			ForumDB bd = new ForumDB();

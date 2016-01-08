@@ -27,6 +27,7 @@ public class AddPost extends HttpServlet {
 	private static final long serialVersionUID = -535869300843163393L;
 
 	public static final String SERVLET_POSTS = "/forum/main/posts";
+	public static final String SERVLET_INDEX = "/forum/index";
 	
 	public static final String FIELD_POST = "addpost";
 	
@@ -44,17 +45,27 @@ public class AddPost extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
+		//session
+		HttpSession session = request.getSession();
+		
+		//verification de user
+		User user = (User)session.getAttribute(ATT_USER);
+		if(user == null)
+		{
+			response.sendRedirect(SERVLET_INDEX);
+			return;
+		}
+		
 		//reccuperation des parametres
 		String post_text = request.getParameter(FIELD_POST);
 		
-		//session
-		HttpSession session = request.getSession();
+		//reccuperation de bean conversations
 		Conversations conversations = (Conversations)session.getAttribute(ATT_CONVS);
 		
 		if(!post_text.equals(""))
 		{
 			//reccuperation de user actuel
-			User user = (User)session.getAttribute(ATT_USER);
+			user = (User)session.getAttribute(ATT_USER);
 			
 			//reccuperation de conversation courante
 			Conversation conversation = conversations.getCurrentConversation();
