@@ -19,7 +19,7 @@
 			
 				<h2>Autentification</h2>
 				
-				<form method="post" class="minimal">
+				<form method="post" class="minimal" accept-charset="ISO-8859-1">
 				
 					<!-- login -->
 					<label for="login">

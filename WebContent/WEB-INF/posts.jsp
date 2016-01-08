@@ -60,7 +60,7 @@
 		
 		<!-- une forme glissante d'ajout d'un nouveau message -->
 		<div style="display:inline-block;position:fixed; bottom:4%; left:2%;width:98%;">
-			<form method="post" action="AddPost">
+			<form method="post" action="AddPost" accept-charset="ISO-8859-1">
 				<textarea name="addpost" id="addpost" placeholder="Votre commentaire" maxlength="128" rows="3"></textarea>
 				<input type="submit" class="btn-minimal" id="btn_add_post" value="Ajouter">
 			</form>

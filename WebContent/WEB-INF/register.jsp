@@ -19,7 +19,7 @@
 			
 				<h2>Cr&eacute;er un compte</h2>
 				
-				<form method="post" action="AddUser" class="minimal">
+				<form method="post" action="AddUser" class="minimal" accept-charset="ISO-8859-1">
 					
 					<label for="login">
 						<!-- Majuscules ou minisucles ou underscore ou chiffres -->
