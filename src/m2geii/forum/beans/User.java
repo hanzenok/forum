@@ -11,7 +11,6 @@ public class User
 	private int id; //id de user dans la bd
 	
 	private String login; //login d'utilisateur
-	private String pass;  //mote de passe 
 	
 	private String firstname; //prenom
 	private String secondname; //nom
@@ -53,26 +52,6 @@ public class User
 	public void setLogin(String login) 
 	{
 		this.login = login;
-	}
-	
-	/**
-	 * Renvoi le mot de passe 
-	 * de l'utilisateur
-	 * @return mot de pass
-	 */
-	public String getPass() 
-	{
-		return pass;
-	}
-	
-	/**
-	 * Défini le mot de passe 
-	 * d'utilisateur
-	 * @param pass mot de passe
-	 */
-	public void setPass(String pass) 
-	{
-		this.pass = pass;
 	}
 	
 	/**

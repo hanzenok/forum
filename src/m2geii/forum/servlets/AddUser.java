@@ -65,13 +65,12 @@ public class AddUser extends HttpServlet {
     	//creation de user bean
     	User user = new User();
     	user.setLogin(login);
-    	user.setPass(pass1);
     	user.setFirstname(firstname);
     	user.setSecondname(secondname);
     	
     	//ajout dans la bd
     	ForumDB db = new ForumDB();
-    	int status = db.addUser(user);
+    	int status = db.addUser(user, pass1);
     	
     	if(status == -1)
     	{

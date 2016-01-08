@@ -42,7 +42,7 @@ public class ForumDB
 	 * @return -1 si l'ajout est echoué,
 	 * un valeur positive sinon
 	 */
-	public int addUser(User user)
+	public int addUser(User user, String pass)
 	{	
     	Connection conn = null;
     	PreparedStatement stat = null;
@@ -61,7 +61,7 @@ public class ForumDB
 			
 			//attributes
 			stat.setString(1, user.getLogin());
-			stat.setString(2, user.getPass());
+			stat.setString(2, pass);
 			stat.setString(3, user.getFirstname());
 			stat.setString(4, user.getSecondname());
 			
@@ -137,7 +137,6 @@ public class ForumDB
 	    	user = new User();
 	    	user.setId(result.getInt(1));
 	    	user.setLogin(login);
-	    	user.setPass(pass);
 	    	user.setFirstname(result.getString(4));
 	    	user.setSecondname(result.getString(5));
 	    	
@@ -155,7 +154,7 @@ public class ForumDB
 	 * Renvoi un utilisateur 
 	 * caractérise par login
 	 * Utilisé pour reccuperer
-	 * les infos sur l'utilisateur (saut mdp)
+	 * les infos sur l'utilisateur
 	 * @param login login d'un utilisateur
 	 * @return utilisateur
 	 */
