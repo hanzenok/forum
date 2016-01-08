@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2016 at 12:37 PM
+-- Generation Time: Jan 08, 2016 at 06:51 PM
 -- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -29,19 +29,26 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `conversations` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `author` varchar(32) NOT NULL,
-  `title` varchar(128) NOT NULL,
+  `title` varchar(32) NOT NULL,
   `creation_date` datetime NOT NULL,
-  `modification_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `conversations`
 --
 
-INSERT INTO `conversations` (`id`, `author`, `title`, `creation_date`, `modification_date`) VALUES
-(1, 'Sara', 'Talking about stuff', '2016-01-04 00:00:00', '2016-01-04 00:00:00'),
-(2, 'Test21', 'A test', '2016-01-04 03:00:00', '2016-01-04 03:00:00');
+INSERT INTO `conversations` (`id`, `author`, `title`, `creation_date`) VALUES
+(1, 'Sara', 'Talking about stuff', '2016-01-04 00:00:00'),
+(2, 'Test21', 'A test', '2016-01-04 03:00:00'),
+(3, 'Sara', 'New Conversation', '2016-01-04 17:27:31'),
+(4, 'Sara', '', '2016-01-04 17:32:33'),
+(5, 'Sara', 'fdf', '2016-01-05 11:20:42'),
+(6, 'Yomen', 'Yo', '2016-01-06 23:23:18'),
+(7, 'Sara', 'as', '2016-01-08 01:02:23'),
+(8, 'Sara', 'as', '2016-01-08 01:02:23'),
+(9, 'Sara', 'new', '2016-01-08 01:05:19'),
+(10, 'Sara', 'nouvelle conversation', '2016-01-08 14:39:40');
 
 -- --------------------------------------------------------
 
@@ -57,14 +64,50 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `date` datetime NOT NULL,
   `text` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `id_conversation`, `number`, `author`, `date`, `text`) VALUES
-(1, 1, 1, 'Sara', '2016-01-04 00:00:01', 'Hi everyone! Can we talk about stuff?');
+(1, 1, 1, 'Sara', '2016-01-04 00:00:01', 'Hi everyone! Can we talk about stuff?'),
+(2, 2, 1, 'Sara', '2016-01-05 00:00:00', 'What''s all about thouse tests?'),
+(3, 1, 2, 'Sara', '2016-01-07 11:21:29', 'dfg'),
+(4, 1, 3, 'Sara', '2016-01-07 11:23:40', 'sdf'),
+(5, 1, 4, 'Sara', '2016-01-07 11:23:53', 'fds'),
+(6, 1, 5, 'Sara', '2016-01-07 11:29:45', 'sdf'),
+(7, 1, 6, 'Sara', '2016-01-07 11:34:33', 'sdf'),
+(8, 1, 7, 'Sara', '2016-01-07 11:36:01', 'yo'),
+(9, 1, 8, 'Sara', '2016-01-07 11:55:38', 'sdf'),
+(10, 1, 9, 'Sara', '2016-01-07 11:56:29', 'sdfsd'),
+(11, 1, 10, 'Sara', '2016-01-07 11:56:59', 'sdf'),
+(12, 1, 11, 'Sara', '2016-01-07 12:10:31', 'fdsf'),
+(13, 1, 12, 'Sara', '2016-01-07 12:12:16', 'new comment'),
+(14, 1, 13, 'Sara', '2016-01-07 12:13:27', 'another new comment'),
+(15, 1, 13, 'Sara', '2016-01-07 12:13:45', 'another new comment'),
+(16, 1, 15, 'Sara', '2016-01-07 12:18:29', 'and another one'),
+(17, 1, 16, 'Sara', '2016-01-07 12:26:55', 'dfdf'),
+(18, 1, 17, 'Sara', '2016-01-07 12:27:52', 'we'),
+(19, 1, 18, 'Sara', '2016-01-07 12:28:01', 'we'),
+(20, 2, 2, 'Sara', '2016-01-07 12:28:19', 'fdf'),
+(21, 2, 3, 'Sara', '2016-01-07 12:29:14', 'f'),
+(22, 2, 4, 'Sara', '2016-01-07 12:30:45', 'kgk'),
+(23, 2, 5, 'Sara', '2016-01-07 14:09:56', 'yo'),
+(24, 2, 6, 'Sara', '2016-01-07 15:20:56', 'What the fuck do you want from me?'),
+(25, 2, 7, 'Test21', '2016-01-07 15:21:32', 'Nothing beach'),
+(26, 2, 8, 'Test21', '2016-01-07 15:22:41', 'ertwergsdfgsdfgsdfgsdfgsdfgsdfgsdfgsdfgsdfgsdfgsdfg'),
+(28, 2, 9, 'Sara', '2016-01-07 16:49:00', 'sdfsdf'),
+(29, 2, 10, 'Sara', '2016-01-07 17:18:44', 'sdf'),
+(30, 2, 11, 'Sara', '2016-01-07 17:42:22', 'fdfdfdf'),
+(31, 2, 12, 'Sara', '2016-01-07 22:42:41', 'jsdf;lksjdf;aklsjdf;laksjdf;laksjdf;laksdjf;laksdjf;alksjdf;laksjdf;lkasjd;flkajs;dlfkja;sldkfj;alskdjf;laksdjf;alksdjf;laksjdf;'),
+(32, 5, 1, 'Sara', '2016-01-07 23:27:31', 'oui,salut'),
+(33, 2, 13, 'newme', '2016-01-08 01:03:37', 'what''s up?'),
+(34, 2, 14, 'Test21', '2016-01-08 12:12:47', 'yo\r\n'),
+(35, 2, 15, 'Sara', '2016-01-08 14:21:28', 'sdf'),
+(36, 2, 16, 'Sara', '2016-01-08 14:40:10', 'you oy ou '),
+(37, 2, 17, 'myself', '2016-01-08 14:42:10', 'the fuck?'),
+(38, 2, 18, 'Sara', '2016-01-08 14:55:02', 'yo');
 
 -- --------------------------------------------------------
 
@@ -80,34 +123,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `secondname` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `pass`, `firstname`, `secondname`) VALUES
-(1, 'test', 'test', 'test', 'test'),
-(2, 'test2', 'test', 'test', 'test'),
-(3, 'aaaaasdfasdfasdf', 'fdfdfff', 'fdf', 'ffffff'),
-(5, 'sfsd', 'asdfasdf', '', ''),
-(6, 'Sara', 'asdfasdf', '', ''),
-(7, 'Sara2', 'asdfasdf', '', ''),
-(9, 'fsddds', 'sdfsdf', 'fffd', 'ff'),
-(10, 'fsdddsd', 'aaaaaa', 'fffd', 'ff'),
-(11, 'TEst32', 'fdfdfd', 'fffd', 'ff'),
-(13, 'Test22', 'asdfasdf', 'fffd', 'ff'),
-(14, 'Test21', 'asdfasdf', 'fffd', 'ff'),
-(15, 'Testsdf', 'asdfasdf', 'fffd', 'ff'),
-(16, 'ffTestsdf', 'asdfasdf', 'fffd', 'ff'),
-(17, 'ffTestsdfffdf', 'asdfasdf', 'fffd', 'ff'),
-(18, 'ffdfdffddf', 'asdfasdf', 'fffd', 'ff'),
-(21, 'ffddf', 'asdfasdf', 'fffd', 'ff'),
-(22, 'ffddfa', 'asdfasdf', 'fffd', 'ff'),
-(23, '1234', '12341234', 'fffd', 'ff'),
-(24, '12345', 'asdfasdf', 'fffd', 'ff'),
-(25, '123456', 'asdfasdf', 'fffd', 'ff'),
-(26, '1234567', 'Ð²Ð°Ð²Ð°Ð²Ð°Ð²Ð°', 'fffd', 'ff');
+(35, 'Sara', 'j K?<H|qz	z', '', ''),
+(36, 'Yomen', 'j K?<H|qz	z', '', ''),
+(37, 'dhgd', 'MKN', 'qq', 'qq');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
