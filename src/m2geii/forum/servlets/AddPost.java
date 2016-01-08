@@ -14,24 +14,33 @@ import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.Post;
 import m2geii.forum.beans.User;
 
+/**
+ * Une servlet d'ajout
+ * d'un nouveau post dans la bd
+ * et un bean Conversations de 
+ * la session
+ * 
+ * @author Ganza Mykhailo
+ */
 public class AddPost extends HttpServlet {
 
 	private static final long serialVersionUID = -535869300843163393L;
 
-	public static final String VIEW_POSTS = "/WEB-INF/posts.jsp";
+	public static final String SERVLET_POSTS = "/forum/main/posts";
 	
 	public static final String FIELD_POST = "addpost";
 	
 	public static final String ATT_USER = "user";
-	public static final String ATT_CONV = "conversation";
 	public static final String ATT_CONVS = "conversations";
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException 
-	{
-		this.getServletContext().getRequestDispatcher(VIEW_POSTS).forward(request, response);
-	}
 
+	/**
+	 * Repod à un clicque sur un bouton "ajouter" (post)
+	 * Ajout un nouveau post 
+	 * dans la bd et un bean
+	 * Conversations de la session
+	 * Repasse comme parametre lindice 
+	 * de la conversation choisi
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
@@ -67,7 +76,7 @@ public class AddPost extends HttpServlet {
 		}
 		
 		//redirection
-		response.sendRedirect("/forum/main/posts?conversation_index=" + conversations.getCurrentConversationIndex());
+		response.sendRedirect(SERVLET_POSTS + "?conversation_index=" + conversations.getCurrentConversationIndex());
 	}
 
 }

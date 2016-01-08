@@ -11,6 +11,13 @@ import javax.servlet.http.HttpSession;
 import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
+
+/**
+ * Une servlet d'accueil de site
+ * Gère la vue index.jsp
+ * 
+ * @author Ganza Mykhailo
+ */
 public class Index extends HttpServlet {
 	
 	private static final long serialVersionUID = 7098976741262951870L;
@@ -24,6 +31,9 @@ public class Index extends HttpServlet {
 	public static final String ATT_USER = "user";
 	public static final String ATT_MESSAGE = "message";
 	
+	/**
+	 * Charge la vue index.jsp
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
@@ -31,6 +41,10 @@ public class Index extends HttpServlet {
 		this.getServletContext().getRequestDispatcher(VIEW_INDEX).forward(request, response);
 	}
 	
+	/**
+	 * Repond à un clique sur le button "connexion"
+	 * Charge le bean User dans la session
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{
@@ -47,15 +61,16 @@ public class Index extends HttpServlet {
 		{
     		message = "Login ou mot de passe incorrect";
     		
+    		//rechargemment de la page
         	request.setAttribute(ATT_MESSAGE, message);  	
         	this.getServletContext().getRequestDispatcher(VIEW_INDEX).forward(request, response);
 		}
 		else
 		{
-			//redirection vers la page principale
 	    	HttpSession session = request.getSession();
 	    	session.setAttribute(ATT_USER, user);
 	    	
+	    	//redirection vers la page principale
 	    	response.sendRedirect(SERVLET_MAIN);
 		}
 	}

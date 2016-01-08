@@ -11,6 +11,13 @@ import javax.servlet.http.HttpSession;
 import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
+/**
+ * Une servlet qui ajoute
+ * un nouveau utilisteur dans la bd
+ * et le charge dans la session
+ * 
+ * @author Ganz Mykhilo
+ */
 public class CreateClient extends HttpServlet {
 	
 	private static final long serialVersionUID = 4373874692137096820L;
@@ -26,13 +33,14 @@ public class CreateClient extends HttpServlet {
 	
 	public static final String ATT_MESSAGE = "message";
 	public static final String ATT_USER = "user";
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException 
-	{	
-		this.getServletContext().getRequestDispatcher(VIEW_REGISTER).forward(request, response);
-	}
 
+	/**
+	 * Ajoute
+	 * un nouveau utilisteur dans la bd
+	 * et le charge dans la session
+	 * Repond à un clique sur un bouton
+	 * "ajouter" utilisateur
+	 */
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
         
     	//reccuperation des parametres

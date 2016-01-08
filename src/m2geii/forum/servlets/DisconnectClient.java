@@ -8,6 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Une servlet qui
+ * vide la session et y supprime
+ * le bean Conversations et bean
+ * User
+ * 
+ * @author Ganza Mykhailo
+ */
 public class DisconnectClient extends HttpServlet 
 {	
 	private static final long serialVersionUID = 8226842651166524768L;
@@ -17,6 +25,10 @@ public class DisconnectClient extends HttpServlet
 	public static final String ATT_USER = "user";
 	public static final String ATT_CONVS = "conversations";
 	
+	/**
+	 * Supprime un bean Conversations
+	 * et User de la session
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{

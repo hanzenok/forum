@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
+/**
+ * Une servlet qui ajoute
+ * une nouvelle conversation dans
+ * la bd et l'ajout dans le bean
+ * Conversations de session
+ * 
+ * @author Ganza Mykhailo
+ */
 public class CreateConversation extends HttpServlet 
 {
 	private static final long serialVersionUID = -7698256495601904630L;
@@ -19,12 +27,14 @@ public class CreateConversation extends HttpServlet
 	public static final String FIELD_TITLE = "title";
 	public static final String ATT_USER = "user";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException 
-	{
-		response.sendRedirect(SERVLET_MAIN);
-	}
-
+	
+	/**
+	 * Ajoute une nouvelle conversation dans
+     * la bd et l'ajout dans le bean
+     * Conversations de session
+     * Repond à un cliquer sur button
+     * "ajouter" (conversation)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{

@@ -11,6 +11,12 @@ import javax.servlet.http.HttpSession;
 import m2geii.forum.beans.Conversations;
 import m2geii.forum.beans.User;
 
+/**
+ * Une servlet
+ * qui charge la vue posts.jsp
+ * 
+ * @author Ganza Mykhailo
+ */
 public class Posts extends HttpServlet 
 {	
 	private static final long serialVersionUID = -8335553417683716525L;
@@ -24,6 +30,10 @@ public class Posts extends HttpServlet
 	public static final String ATT_CONV = "conversation";
 	public static final String ATT_CONV_INDEX = "conversation_index";
 	
+	/**
+	 * Charge la vue posts.jsp
+	 * La conversation est passé en parametre
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
@@ -49,10 +59,5 @@ public class Posts extends HttpServlet
 		this.getServletContext().getRequestDispatcher(VIEW_POSTS).forward(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException 
-	{	
-		
-	}
 }
 

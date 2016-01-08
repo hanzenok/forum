@@ -12,6 +12,15 @@ import m2geii.forum.beans.Conversations;
 import m2geii.forum.beans.ForumDB;
 import m2geii.forum.beans.User;
 
+
+/**
+ * 
+ * Une servelt qui 
+ * charge la vue principale
+ * main.jsp
+ * 
+ * @author Ganza Mykhailo
+ */
 public class Main extends HttpServlet 
 {	
 	private static final long serialVersionUID = -4312652067101625925L;
@@ -24,6 +33,11 @@ public class Main extends HttpServlet
 	public static final String ATT_CONV = "conversation";
 	public static final String ATT_CONV_INDEX = "conversation_index";
 	
+	/**
+	 * Charge la vue
+	 * principale main.jsp
+	 * Passe comme attribut un bean Conversations
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
@@ -46,12 +60,6 @@ public class Main extends HttpServlet
 		session.setAttribute(ATT_CONVS, conversations);
 		
 		//redirection
-		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException 
-	{	
 		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 }
