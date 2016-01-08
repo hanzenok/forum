@@ -41,6 +41,7 @@ public class ForumDB
 	 * la base des données
 	 * Utilisée par la page d'enregistremment 
 	 * d'utilisateur
+	 * Utilise le hachage MD5
 	 * @param user utilisatuer à ajouter
 	 * @return -1 si l'ajout est echoué,
 	 * un valeur positive sinon
@@ -117,6 +118,7 @@ public class ForumDB
 	 * Vérifie si l'utilisateur 
 	 * est dans la base
 	 * Utilisée par la page d'acceuil
+	 * Utilise le hachage MD5
 	 * @param login login d'utilisateur
 	 * @param pass mot de passe d'utilisateur
 	 * @return utilisateur si il est dans la base,
