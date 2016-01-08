@@ -68,6 +68,18 @@ public class Index extends HttpServlet {
 		else
 		{
 	    	HttpSession session = request.getSession();
+	    	
+	    	//verification si l'utilisateur est deja connectee
+	    	User check_user = (User) session.getAttribute(ATT_USER);
+	    	if(check_user != null)
+	    	{
+	    		message = "Erreur";
+	    		
+	    		//rechargemment de la page
+	        	request.setAttribute(ATT_MESSAGE, message);  	
+	        	this.getServletContext().getRequestDispatcher(VIEW_INDEX).forward(request, response);
+	    	}
+	    	
 	    	session.setAttribute(ATT_USER, user);
 	    	
 	    	//redirection vers la page principale
