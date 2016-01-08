@@ -73,7 +73,6 @@ public class AddPost extends HttpServlet {
 			//creation de bean post
 			Post post = new Post();
 			post.setAuthor(user);
-			post.setNumber(conversation.getNbPosts() + 1);
 			post.setText(post_text);
 			
 			//ajout dans la db

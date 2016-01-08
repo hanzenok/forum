@@ -30,12 +30,12 @@
 		</section>
 		
 		<!-- ensemble des messages -->
-		<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post">
+		<c:forEach items="${sessionScope.conversations.currentConversation.posts}" var="post" varStatus="status">
 			<section class="form" id="post">
 				
 				<!-- post id -->
 				<span style="font-weight:bold;">
-					#<c:out value="${post.number}"></c:out>
+					#<c:out value="${status.count}"></c:out>
 				</span>
 				
 				<!-- l'auteur de post -->

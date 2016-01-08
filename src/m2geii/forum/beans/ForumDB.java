@@ -425,9 +425,8 @@ public class ForumDB
 				Post post = new Post();
 				post.setId(result.getInt(1));
 				post.setAuthor(getUser(result.getInt(2)));
-				post.setNumber(result.getInt(4));
-				post.setDate(result.getString(5));
-				post.setText(result.getString(6));
+				post.setDate(result.getString(4));
+				post.setText(result.getString(5));
 				
 				//ajout dans la liste
 				posts.add(post);
@@ -465,14 +464,13 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("INSERT INTO posts (id_user, id_conversation, number, date, text) VALUES (?, ?, ?, NOW(), ?);"
+			stat = conn.prepareStatement("INSERT INTO posts (id_user, id_conversation, date, text) VALUES (?, ?, NOW(), ?);"
 					, Statement.RETURN_GENERATED_KEYS);
 			
 			//attributes
 			stat.setInt(1, user.getId());
 			stat.setInt(2, conversation_id);
-			stat.setInt(3, number);
-			stat.setString(4, text);
+			stat.setString(3, text);
 			
 			//execution
 			status = stat.executeUpdate();
@@ -541,9 +539,8 @@ public class ForumDB
 	    	post = new Post();
 	    	post.setId(result.getInt(1));
 	    	post.setAuthor(getUser(result.getInt(2)));
-	    	post.setNumber(result.getInt(4));
-	    	post.setDate(result.getString(5));
-	    	post.setText(result.getString(6));
+	    	post.setDate(result.getString(4));
+	    	post.setText(result.getString(5));
 	    	
 	    	//cloture de connexion
 	    	if(conn != null) conn.close();

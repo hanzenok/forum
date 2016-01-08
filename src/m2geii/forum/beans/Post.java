@@ -10,7 +10,6 @@ package m2geii.forum.beans;
 public class Post {
 
 	private int id; //l'identifiant de post dans la bd
-	private int number; //position de post dans la conversation
 	
 	private User author; //créator de post
 	private String date; //date de créations
@@ -32,26 +31,6 @@ public class Post {
 	public void setId(int id) 
 	{
 		this.id = id;
-	}
-	
-	/**
-	 * Renvoi la position de post dans
-	 * la conversation
-	 * @return position
-	 */
-	public int getNumber() 
-	{
-		return number;
-	}
-
-	/**
-	 * Défini la position de post
-	 * dans la conversation
-	 * @param number position
-	 */
-	public void setNumber(int number) 
-	{
-		this.number = number;
 	}
 
 	/**
