@@ -1,5 +1,8 @@
 package m2geii.forum.beans;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,6 +52,20 @@ public class ForumDB
     	ResultSet result = null;
     	int status = -1;
     	
+    	//hash de mot de passe
+    	String hash_pass = null;
+    	try 
+    	{
+    		byte[] bytes_in = pass.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			
+			byte[] bytes_out = md.digest(bytes_in);
+			hash_pass = new String(bytes_out);
+			
+		} 
+    	catch (NoSuchAlgorithmException e1) {e1.printStackTrace();}
+    	catch (UnsupportedEncodingException e1) {e1.printStackTrace();}
+    	
     	//sql
     	try 
     	{
@@ -61,7 +78,7 @@ public class ForumDB
 			
 			//attributes
 			stat.setString(1, user.getLogin());
-			stat.setString(2, pass);
+			stat.setString(2, hash_pass);
 			stat.setString(3, user.getFirstname());
 			stat.setString(4, user.getSecondname());
 			
@@ -112,6 +129,20 @@ public class ForumDB
     	ResultSet result = null;
     	User user = null;
     	
+    	//hash de mot de passe
+    	String hash_pass = null;
+    	try 
+    	{
+    		byte[] bytes_in = pass.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			
+			byte[] bytes_out = md.digest(bytes_in);
+			hash_pass = new String(bytes_out);
+			
+		} 
+    	catch (NoSuchAlgorithmException e1) {e1.printStackTrace();}
+    	catch (UnsupportedEncodingException e1) {e1.printStackTrace();}
+    	
     	//sql
     	try 
     	{
@@ -123,7 +154,7 @@ public class ForumDB
 			
 			//attributes
 			stat.setString(1, login);
-			stat.setString(2, pass);
+			stat.setString(2, hash_pass);
 			
 			//execution
 			result = stat.executeQuery();
