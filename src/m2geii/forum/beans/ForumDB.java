@@ -63,7 +63,7 @@ public class ForumDB
 			byte[] bytes_out = md.digest(bytes_in);
 			hash_pass = new String(bytes_out);
 			
-		} 
+		}
     	catch (NoSuchAlgorithmException e1) {e1.printStackTrace();}
     	catch (UnsupportedEncodingException e1) {e1.printStackTrace();}
     	

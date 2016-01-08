@@ -46,15 +46,7 @@ public class AddUser extends HttpServlet {
         
 		//session
 		HttpSession session = request.getSession();
-		
-		//verification de user
-		User user = (User)session.getAttribute(ATT_USER);
-		if(user == null)
-		{
-			response.sendRedirect(SERVLET_INDEX);
-			return;
-		}
-    	
+		    	
     	//reccuperation des parametres
     	String login = request.getParameter(FIELD_LOGIN);
     	String pass1 = request.getParameter(FIELD_PASS1);
@@ -75,7 +67,7 @@ public class AddUser extends HttpServlet {
     	}
 
     	//creation de user bean
-    	user = new User();
+    	User user = new User();
     	user.setLogin(login);
     	user.setFirstname(firstname);
     	user.setSecondname(secondname);
