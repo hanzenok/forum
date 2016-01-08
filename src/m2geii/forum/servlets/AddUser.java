@@ -54,7 +54,7 @@ public class AddUser extends HttpServlet {
     	String message = "";
     	if(!pass1.equals(pass2))
     	{
-    		message = "Les mot de passes ne correspondent pas";
+    		message = "Les mots de passes ne correspondent pas";
     		
         	request.setAttribute(ATT_MESSAGE, message);  	
         	this.getServletContext().getRequestDispatcher(VIEW_REGISTER).forward(request, response);

@@ -129,6 +129,10 @@ public class ForumDB
     	ResultSet result = null;
     	User user = null;
     	
+    	//verification si le user est deja connectee
+    	user = getUser(login);
+    	if(user != null) return null;
+    	
     	//hash de mot de passe
     	String hash_pass = null;
     	try 

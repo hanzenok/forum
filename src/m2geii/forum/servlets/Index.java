@@ -59,7 +59,7 @@ public class Index extends HttpServlet {
 		String message = "";
 		if(user == null)
 		{
-    		message = "Login ou mot de passe incorrect";
+    		message = "Erreur";
     		
     		//rechargemment de la page
         	request.setAttribute(ATT_MESSAGE, message);  	
