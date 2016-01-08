@@ -18,12 +18,12 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>CreateClient</servlet-name>
-    <servlet-class>m2geii.forum.servlets.CreateClient</servlet-class>
+    <servlet-name>AddUser</servlet-name>
+    <servlet-class>m2geii.forum.servlets.AddUser</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CreateClient</servlet-name>
-    <url-pattern>/CreateClient</url-pattern>
+    <servlet-name>AddUser</servlet-name>
+    <url-pattern>/AddUser</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Main</servlet-name>
@@ -34,20 +34,20 @@
     <url-pattern>/main</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DisconnectClient</servlet-name>
-    <servlet-class>m2geii.forum.servlets.DisconnectClient</servlet-class>
+    <servlet-name>DisconnectUser</servlet-name>
+    <servlet-class>m2geii.forum.servlets.DisconnectUser</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DisconnectClient</servlet-name>
+    <servlet-name>DisconnectUser</servlet-name>
     <url-pattern>/disconnect</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>CreateConversation</servlet-name>
-    <servlet-class>m2geii.forum.servlets.CreateConversation</servlet-class>
+    <servlet-name>AddConversation</servlet-name>
+    <servlet-class>m2geii.forum.servlets.AddConversation</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CreateConversation</servlet-name>
-    <url-pattern>/CreateConversation</url-pattern>
+    <servlet-name>AddConversation</servlet-name>
+    <url-pattern>/AddConversation</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Posts</servlet-name>

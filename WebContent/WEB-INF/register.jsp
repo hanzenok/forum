@@ -19,7 +19,7 @@
 			
 				<h2>Cr&eacute;er un compte</h2>
 				
-				<form method="post" action="CreateClient" class="minimal">
+				<form method="post" action="AddUser" class="minimal">
 					
 					<label for="login">
 						<!-- Majuscules ou minisucles ou underscore ou chiffres -->

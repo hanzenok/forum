@@ -18,7 +18,7 @@ import m2geii.forum.beans.User;
  * 
  * @author Ganz Mykhilo
  */
-public class CreateClient extends HttpServlet {
+public class AddUser extends HttpServlet {
 	
 	private static final long serialVersionUID = 4373874692137096820L;
 

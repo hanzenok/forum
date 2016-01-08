@@ -19,7 +19,7 @@ import m2geii.forum.beans.User;
  * 
  * @author Ganza Mykhailo
  */
-public class CreateConversation extends HttpServlet 
+public class AddConversation extends HttpServlet 
 {
 	private static final long serialVersionUID = -7698256495601904630L;
 	

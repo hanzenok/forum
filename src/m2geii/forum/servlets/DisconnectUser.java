@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * 
  * @author Ganza Mykhailo
  */
-public class DisconnectClient extends HttpServlet 
+public class DisconnectUser extends HttpServlet 
 {	
 	private static final long serialVersionUID = 8226842651166524768L;
 	
