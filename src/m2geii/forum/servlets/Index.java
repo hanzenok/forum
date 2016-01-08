@@ -68,6 +68,8 @@ public class Index extends HttpServlet {
 		else
 		{
 	    	HttpSession session = request.getSession();
+	    	session.removeAttribute(ATT_USER);//suppression de toute compte
+	    	//si on est sur la page d'acceuil
 	    	
 	    	//verification si l'utilisateur est deja connectee
 	    	User check_user = (User) session.getAttribute(ATT_USER);
