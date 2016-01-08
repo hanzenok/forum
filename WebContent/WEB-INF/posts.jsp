@@ -23,7 +23,7 @@
 				<c:out value="${sessionScope.conversations.currentConversation.title}" />
 			</span>
 			<span>
-				( <c:out value="${sessionScope.conversations.currentConversation.nbPosts}"/> posts )
+				( <c:out value="${sessionScope.conversations.currentConversation.nbPosts}"/> messages )
 			</span>
 		</section>
 		

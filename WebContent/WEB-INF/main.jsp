@@ -23,6 +23,9 @@
 			<span style="font-size:1.8em;">
 				Bienvenu sur le forum!
 			 </span>
+			 <span>
+				( <c:out value="${sessionScope.conversations.nbPosts}"/> messages )
+			</span>
 		</section>
 		
 		<section class="form" id="forum">
