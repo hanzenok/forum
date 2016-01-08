@@ -44,7 +44,7 @@
 				</span>
 				
 				<!-- text de post -->
-				<span style="font-size:1.1em;">
+				<span style="font-size:1.1em;word-wrap:break-word;">
 					<c:out value="${post.text}"></c:out>
 				</span>
 				
