@@ -8,12 +8,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Un classe qui
+ * se charge de la
+ * communication avec le base
+ * des données
+ * 
+ * @author Mykhailo Ganza
+ */
 public class ForumDB 
 {
-	private final String BD_URL = "jdbc:mysql://localhost:3306/forum";
-	private final String BD_USER = "root";
-	private final String BD_PASS = "svessa";
+	private final String BD_URL = "jdbc:mysql://localhost:3306/forum"; //lien vers la bd
+	private final String BD_USER = "root"; //utilisateur de la bd
+	private final String BD_PASS = "svessa"; //mot de passe de la bd
 	
+	/**
+	 * Constructeur principale
+	 * Charge le driver JDBC
+	 */
 	public ForumDB()
 	{
     	//chargement de driver jdbc
@@ -21,6 +33,15 @@ public class ForumDB
     	catch ( ClassNotFoundException e ) {e.printStackTrace();}
 	}
 	
+	/**
+	 * Ajout un utilisateur dans 
+	 * la base des données
+	 * Utilisée par la page d'enregistremment 
+	 * d'utilisateur
+	 * @param user utilisatuer à ajouter
+	 * @return -1 si l'ajout est echoué,
+	 * un valeur positive sinon
+	 */
 	public int addUser(User user)
 	{	
     	Connection conn = null;
@@ -65,7 +86,6 @@ public class ForumDB
     	}
     	
     	//cloture de connexion
-    	
 		try 
 		{
 			if(conn != null) conn.close();
@@ -76,6 +96,15 @@ public class ForumDB
 		return status;
 	}
 	
+	/**
+	 * Vérifie si l'utilisateur 
+	 * est dans la base
+	 * Utilisée par la page d'acceuil
+	 * @param login login d'utilisateur
+	 * @param pass mot de passe d'utilisateur
+	 * @return utilisateur si il est dans la base,
+	 * null sinon
+	 */
 	public User checkUser(String login, String pass)
 	{
     	Connection conn = null;
@@ -122,7 +151,14 @@ public class ForumDB
     	return user;
 	}
 	
-	//pas de mdp
+	/**
+	 * Renvoi un utilisateur 
+	 * caractérise par login
+	 * Utilisé pour reccuperer
+	 * les infos sur l'utilisateur (saut mdp)
+	 * @param login login d'un utilisateur
+	 * @return utilisateur
+	 */
 	public User getUser(String login)
 	{
     	Connection conn = null;
@@ -167,6 +203,11 @@ public class ForumDB
     	return user;
 	}	
 	
+	/**
+	 * Revnoi la liste des toutese les 
+	 * conversations de la base
+	 * @return liste des conversations
+	 */
 	public Conversations getConversations()
 	{	
     	Connection conn = null;
@@ -198,7 +239,7 @@ public class ForumDB
 				conversation.setTitle(result.getString(3));
 				conversation.setCreationDate(result.getString(4));
 				
-				//reccuperation des post
+				//reccuperation des posts
 				conversation.setPosts(getPosts(conversation.getId()));
 				
 				//ajout dans la liste
@@ -219,6 +260,14 @@ public class ForumDB
 		return conversations;
 	}
 	
+	/**
+	 * Ajout une nouvelle conversation
+	 * dans la base
+	 * @param user créator de la conversation
+	 * @param title titre de la conversation
+	 * @return valeur positive en cas de succes,
+	 * -1 sinon
+	 */
 	public int createConversation(User user, String title)
 	{
     	Connection conn = null;
@@ -255,6 +304,13 @@ public class ForumDB
 		return status;
 	}
 	
+	/**
+	 * Renvoit la liste des posts 
+	 * d'un conversation donnée
+	 * @param id_conversation identifiant de la 
+	 * coversation
+	 * @return liste des pots ou null
+	 */
 	ArrayList<Post> getPosts(int id_conversation)
 	{
     	Connection conn = null;
@@ -302,6 +358,15 @@ public class ForumDB
 		return posts;
 	}
 	
+	/**
+	 * Ajout un post dans la bd
+	 * @param author créator de post
+	 * @param number position dans la conversation
+	 * @param text une message
+	 * @param conversation_id l'identifiant de la conversation 
+	 * associé
+	 * @return identifiant de post crée
+	 */
 	public int addPost(String author, int number, String text, int conversation_id)
 	{
     	Connection conn = null;
@@ -356,6 +421,11 @@ public class ForumDB
 		return status;
 	}
 	
+	/**
+	 * Renvoi un post
+	 * @param post_id identifiant de post
+	 * @return post
+	 */
 	public Post getPost(int post_id)
 	{
     	Connection conn = null;
