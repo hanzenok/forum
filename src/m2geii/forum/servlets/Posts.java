@@ -15,7 +15,7 @@ public class Posts extends HttpServlet
 {	
 	private static final long serialVersionUID = -8335553417683716525L;
 	
-	public static final String VIEW_CONVERSATIONS = "/WEB-INF/conversations.jsp";
+	public static final String VIEW_MAIN = "/WEB-INF/main.jsp";
 	public static final String VIEW_POSTS = "/WEB-INF/posts.jsp";
 	public static final String SERVLET_INDEX = "/forum/index";
 	

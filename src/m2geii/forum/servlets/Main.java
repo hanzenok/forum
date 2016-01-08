@@ -16,7 +16,7 @@ public class Main extends HttpServlet
 {	
 	private static final long serialVersionUID = -4312652067101625925L;
 	
-	public static final String VIEW_CONVERSATIONS = "/WEB-INF/conversations.jsp";
+	public static final String VIEW_MAIN = "/WEB-INF/main.jsp";
 	public static final String SERVLET_INDEX = "/forum/index";
 	
 	public static final String ATT_USER = "user";
@@ -46,12 +46,12 @@ public class Main extends HttpServlet
 		session.setAttribute(ATT_CONVS, conversations);
 		
 		//redirection
-		this.getServletContext().getRequestDispatcher(VIEW_CONVERSATIONS).forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException 
 	{	
-		this.getServletContext().getRequestDispatcher(VIEW_CONVERSATIONS).forward(request, response);
+		this.getServletContext().getRequestDispatcher(VIEW_MAIN).forward(request, response);
 	}
 }
