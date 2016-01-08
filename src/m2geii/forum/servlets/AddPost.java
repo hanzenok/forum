@@ -78,7 +78,7 @@ public class AddPost extends HttpServlet {
 			
 			//ajout dans la db
 			ForumDB db = new ForumDB();
-			int id = db.addPost(user.getLogin(), conversation.getNbPosts() + 1, post_text, conversation.getId());
+			int id = db.addPost(user, conversation.getNbPosts() + 1, post_text, conversation.getId());
 			
 			//et dans les conversations
 			Post new_post = db.getPost(id);

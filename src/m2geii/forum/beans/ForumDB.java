@@ -191,7 +191,7 @@ public class ForumDB
 	 * @param login login d'un utilisateur
 	 * @return utilisateur
 	 */
-	public User getUser(String login)
+	public User getUdser(String login)
 	{
     	Connection conn = null;
     	PreparedStatement stat = null;
@@ -222,6 +222,58 @@ public class ForumDB
 	    	user = new User();
 	    	user.setId(result.getInt(1));
 	    	user.setLogin(login);
+	    	user.setFirstname(result.getString(4));
+	    	user.setSecondname(result.getString(5));
+	    	
+	    	//cloture de connexion
+	    	if(conn != null) conn.close();
+	    	if(stat != null) stat.close();
+	 
+    	} 
+    	catch (SQLException e) {e.printStackTrace();}
+
+    	return user;
+	}	
+	
+	/**
+	 * Renvoi un utilisateur 
+	 * caractérise par id
+	 * Utilisé pour reccuperer
+	 * les infos sur l'utilisateur
+	 * @param id id d'un utilisateur
+	 * @return utilisateur
+	 */
+	public User getUser(int id)
+	{
+    	Connection conn = null;
+    	PreparedStatement stat = null;
+    	ResultSet result = null;
+    	User user = null;
+    	
+    	//sql
+    	try 
+    	{
+    		//connexion
+			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
+			
+			//requete preparee
+			stat = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
+			
+			//attributes
+			stat.setInt(1, id);
+			
+			//execution
+			result = stat.executeQuery();
+			result.next();
+			
+			//si il y a plusieur ou aucune ligne
+			if(result.getRow() != 1) 
+				return null;
+			
+	    	//creation de user bean
+	    	user = new User();
+	    	user.setId(id);
+	    	user.setLogin(result.getString(2));
 	    	user.setFirstname(result.getString(4));
 	    	user.setSecondname(result.getString(5));
 	    	
@@ -267,7 +319,7 @@ public class ForumDB
 				//creation de bean conversation
 				Conversation conversation = new Conversation();
 				conversation.setId(result.getInt(1));
-				conversation.setAuthor(getUser(result.getString(2)));
+				conversation.setAuthor(getUser(result.getInt(2)));
 				conversation.setTitle(result.getString(3));
 				conversation.setCreationDate(result.getString(4));
 				
@@ -313,11 +365,11 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("INSERT INTO conversations (author, title, creation_date)"
+			stat = conn.prepareStatement("INSERT INTO conversations (id_user, title, creation_date)"
 					+ " VALUES (?, ?, NOW());");
 			
 			//attributes
-			stat.setString(1, user.getLogin());
+			stat.setInt(1, user.getId());
 			stat.setString(2, title);
 			
 			//execution
@@ -372,8 +424,8 @@ public class ForumDB
 				//creation de bean post
 				Post post = new Post();
 				post.setId(result.getInt(1));
-				post.setNumber(result.getInt(3));
-				post.setAuthor(getUser(result.getString(4)));
+				post.setAuthor(getUser(result.getInt(2)));
+				post.setNumber(result.getInt(4));
 				post.setDate(result.getString(5));
 				post.setText(result.getString(6));
 				
@@ -399,7 +451,7 @@ public class ForumDB
 	 * associé
 	 * @return identifiant de post crée
 	 */
-	public int addPost(String author, int number, String text, int conversation_id)
+	public int addPost(User user, int number, String text, int conversation_id)
 	{
     	Connection conn = null;
     	PreparedStatement stat = null;
@@ -413,13 +465,13 @@ public class ForumDB
 			conn = DriverManager.getConnection(BD_URL, BD_USER, BD_PASS);	
 			
 			//requete preparee
-			stat = conn.prepareStatement("INSERT INTO posts (id_conversation, number, author, date, text) VALUES (?, ?, ?, NOW(), ?);"
+			stat = conn.prepareStatement("INSERT INTO posts (id_user, id_conversation, number, date, text) VALUES (?, ?, ?, NOW(), ?);"
 					, Statement.RETURN_GENERATED_KEYS);
 			
 			//attributes
-			stat.setInt(1, conversation_id);
-			stat.setInt(2, number);
-			stat.setString(3,author);
+			stat.setInt(1, user.getId());
+			stat.setInt(2, conversation_id);
+			stat.setInt(3, number);
 			stat.setString(4, text);
 			
 			//execution
@@ -455,10 +507,10 @@ public class ForumDB
 	
 	/**
 	 * Renvoi un post
-	 * @param post_id identifiant de post
+	 * @param id identifiant de post
 	 * @return post
 	 */
-	public Post getPost(int post_id)
+	public Post getPost(int id)
 	{
     	Connection conn = null;
     	PreparedStatement stat = null;
@@ -475,7 +527,7 @@ public class ForumDB
 			stat = conn.prepareStatement("SELECT * FROM posts WHERE id = ?;");
 			
 			//attributes
-			stat.setInt(1, post_id);
+			stat.setInt(1, id);
 			
 			//execution
 			result = stat.executeQuery();
@@ -488,7 +540,8 @@ public class ForumDB
 	    	//creation de user bean
 	    	post = new Post();
 	    	post.setId(result.getInt(1));
-	    	post.setNumber(result.getInt(3));
+	    	post.setAuthor(getUser(result.getInt(2)));
+	    	post.setNumber(result.getInt(4));
 	    	post.setDate(result.getString(5));
 	    	post.setText(result.getString(6));
 	    	
