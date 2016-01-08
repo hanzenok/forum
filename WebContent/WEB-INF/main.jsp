@@ -19,6 +19,7 @@
 			<a href="<c:url value="/disconnect"/>" style="margin-top:10px;" >deconnexion</a>
 		</section>
 		
+		<!-- info sur le forum -->
 		<section class="form" id="info">
 			<span style="font-size:1.8em;">
 				Bienvenu sur le forum!
@@ -28,6 +29,7 @@
 			</span>
 		</section>
 		
+		<!-- ensemble des conversations -->
 		<section class="form" id="forum">
 		
 			<ul>
@@ -57,6 +59,7 @@
 				</c:forEach>
 			</ul>
 			
+			<!-- form pour ajout une nouvelle conversation -->
 			<form method="post" action="CreateConversation">
 					<input type="text" name="title" id="title" style="margin-left:59%;" placeholder="Nouvelle conversation" maxlength="32">
 					<input type="submit" class="btn-minimal" id="btn_add_conv" value="Ajouter">

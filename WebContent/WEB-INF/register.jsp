@@ -12,7 +12,9 @@
 	
 	<body>
 
+		<!-- form d'ajout d'un nouveau utilisateur -->
 		<div data-role="main">
+		
 			<section class="form" id="form">
 			
 				<h2>Cr&eacute;er un compte</h2>

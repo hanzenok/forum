@@ -12,6 +12,7 @@
 
 	<body>
 		
+		<!-- form de conexion d'utilisatuer -->
 		<div data-role="main">
 		
 			<section class="form">
@@ -20,16 +21,19 @@
 				
 				<form method="post" class="minimal">
 				
+					<!-- login -->
 					<label for="login">
 						<input type="text" name="login" id="login" placeholder="Login" pattern=".{4,32}" value="<c:out value="${sessionScope.user.login}"/>" maxlength="32" required />
 					</label>
 					
+					<!-- mot de passe -->
 					<label for="password">
 						<input type="password" name="password" id="password" placeholder="Mot de passe" pattern=".{6,32}" maxlength="32" required />
 					</label>
 					
 					<button type="submit" id="connexion" class="btn-minimal">Connexion</button>
 					
+					<!-- lien vers la page d'ajout d'utilisateur -->
 					<a href="<c:url value="/register"/>"> Creer un compte </a>
 					
 				</form>
